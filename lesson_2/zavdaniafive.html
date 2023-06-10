@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <div class="title">Задача 5. </div>
+      <div class="txt">Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.</div>
+      <script>
+        "use strict"
+        // Воодимо необхідні данні  
+        let valueInSeconds = parseInt(prompt ('Введіть кількість секунд:', '0'))
+        const SECONDS_HOUR = 3600
+        const SECONDS_MINUTES = 60
+    
+        // Знаходимо результат
+        let calcSumHour = Math.floor(valueInSeconds / SECONDS_HOUR)
+        let calcSumMinutes = Math.floor((valueInSeconds % SECONDS_HOUR) / SECONDS_MINUTES)
+    
+        //Виводимо отриманий результат
+        document.write(`
+        <div class="txt"> Секунди котрі ввели = ${valueInSeconds} </div>
+        <div class="txt"> Визначення годин = ${calcSumHour} </div>
+        <div class="txt"> Визначення мінут = ${calcSumMinutes} </div>
+        
+        `)
+    
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

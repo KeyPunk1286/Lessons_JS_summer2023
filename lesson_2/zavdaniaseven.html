@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Zavdania_7</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <div class="title">Задача 7. </div>
+      <div class="txt">Знайти суму випадкового номера місяця (від 1 до 12) та випадкового номера дня (від 0 до 6).
+      </div>
+      
+      <script>
+        "use strict"
+        // Воодимо необхідні данні  
+        let minMonth = 1
+        let maxMonth = 12
+        let minDay = 0
+        let maxDay = 6
+        
+    
+        // Знаходимо результат
+        let anyMonth = minMonth + Math.floor(Math.random() * (maxMonth - minMonth + 1))
+        let anyDay = minDay + Math.floor(Math.random() * (maxDay - minDay + 1))
+        let sumMonthDay = anyMonth + anyDay
+    
+        //Виводимо отриманий результат
+        document.write(`
+          <div class="txt">Випадковий місяць (від 1 до 12) : ${anyMonth}</div>
+          <div class="txt">Випадковий місяць (від 0 до 6) : ${anyDay}</div>
+          <div class="txt"> Сума випадкового номера місяця і дня: ${sumMonthDay}</div>
+        `)
+    
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Zavdania_1</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <div class="title">Задача 1. </div>
+      <div class="txt">Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці</div>
+      <script>
+        "use strict"
+        // Воодимо необхідні данні  
+        let firstRealNumbers = parseFloat(prompt ('Load please first number:', '0'))
+        let secondRealNumbers = parseFloat(prompt('Load please second number:', '0'))
+    
+        // Знаходимо результат
+        let sumNumbers = firstRealNumbers + secondRealNumbers
+        let multiplicationNumbers = firstRealNumbers * secondRealNumbers
+        let divisionNumbers = firstRealNumbers / secondRealNumbers
+    
+        //Виводимо отриманий результат
+        document.write(`<div class="inner"><div><p>Перше число</p><p>${firstRealNumbers}</p></div>
+        <div><p>Друге число</p><p>${secondRealNumbers}</p></div>
+        <div><p>Сума</p><p>${sumNumbers}</p></div>
+        <div><p>Добуток</p><p>${multiplicationNumbers}</p></div>
+        <div><p>Частка</p><p>${divisionNumbers.toFixed(2)}</p></div>
+        </div>`)
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

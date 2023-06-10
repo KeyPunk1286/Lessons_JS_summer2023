@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Zavdania_0</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <div class="title">Задача 0. </div>
+      <div class="txt">Обчислити значення виразів</div>
+      <img src="img/Знімок екрана 2023-06-08 123017.png" alt="#">
+      <script>
+        "use strict"
+        // Воодимо необхідні данні  
+        let a = parseFloat(prompt ('Load please first number:', '0'))
+        let b = parseFloat(prompt('Load please second number:', '0'))
+        let c = parseFloat(prompt('Please upload number three:', '0'))
+    
+        // Знаходимо результат
+        let s1 = a + 12 + b
+        let s2 = Math.sqrt((a + b) / (2 * a))
+        let s3 = Math.cbrt((a + b) * c)
+        let s4 = Math.sin(a / -b)
+    
+        //Виводимо отриманий результат
+        document.write(`<div class="txt"> result s1 = ${s1} </div>`)
+        document.write(`<div class="txt"> result s2 = ${s2.toFixed(2)} </div>`)
+        document.write(`<div class="txt"> result s3 = ${s3.toFixed(2)} </div>`)
+        document.write(`<div class="txt"> result s4 = ${s4.toFixed(2)} </div>`)
+    
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+
+</body>
+</html>

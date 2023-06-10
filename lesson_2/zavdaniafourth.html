@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <div class="title">Задача 4. </div>
+      <div class="txt">Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів</div>
+      
+      <script>
+        "use strict"
+        // Воодимо необхідні данні  
+        let centimeters = parseFloat(prompt ('Введіть довжину:', '0.00'))
+        const METER = 100
+        const KILOMETER = 100000
+        
+    
+        // Знаходимо результат
+        let calcSumMetr = centimeters / METER
+        let calcSumKilometer = centimeters / KILOMETER
+
+    
+        //Виводимо отриманий результат
+        document.write(`
+        <div class="txt"> Довжина ${centimeters} см. в метрах буде = ${calcSumMetr} </div>
+        <div class="txt"> Довжина ${centimeters} см. в кілометрах буде = ${calcSumKilometer} </div>
+        `)
+    
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

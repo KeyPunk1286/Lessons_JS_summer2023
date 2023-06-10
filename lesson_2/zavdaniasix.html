@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Zavdania_6</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <div class="title">Задача 6. </div>
+      <div class="txt">З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість
+         кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+      </div>
+      
+      <script>
+        "use strict"
+        // Воодимо необхідні данні  
+        let priceFirst = parseFloat(prompt ('Введіть ціну першого товару:', '0'))
+        let quantityFirst = parseInt(prompt('Введіть кількість товару:', '0'))
+        let priceSecond = parseFloat(prompt ('Введіть ціну другого товару:', '0'))
+        let quantitySecond = parseInt(prompt('Введіть кількість товару:', '0'))
+        let priceThird = parseFloat(prompt ('Введіть ціну третього товару:', '0'))
+        let quantityThird = parseInt(prompt('Введіть кількість товару:', '0'))
+        
+    
+        // Знаходимо результат
+        let calcFirstSum = priceFirst * quantityFirst
+        let calcSecondSum = priceSecond * quantitySecond
+        let calcThirddSum = priceThird * quantityThird
+
+        let totalSum = calcFirstSum + calcSecondSum + calcThirddSum
+    
+        //Виводимо отриманий результат
+        document.write(`
+          <div class="price__tag"> 
+            <div>Товарний чек</div>
+            <div>Товар № 1... кількість ${quantityFirst}...........${priceFirst} гр.(за одиницю)</div>
+            <div>Товар № 2... кількість ${quantitySecond}...........${priceSecond} гр.(за одиницю)</div>
+            <div>Товар № 3... кількість ${quantityThird}...........${priceThird} гр.(за одиницю)</div>
+            <div class="flex"><p>Дякуємо за покупку</p> <p>Сума: ${totalSum}</p></div>
+          </div>
+        `)
+    
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

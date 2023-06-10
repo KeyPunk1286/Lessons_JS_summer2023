@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Zavdania_2</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <div class="title">Задача 2. </div>
+      <div class="txt">Дано рік народження (дата: 1 січня) та поточний рік. Знайти кількість років.
+      </div>
+      
+      <script>
+        "use strict"
+        // Воодимо необхідні данні  
+        let ayearOfBirth = parseInt(prompt ('Введіть рік свого народження:', '1986'))
+        const CURRENT_YEAR = 2023
+
+    
+        // Знаходимо результат
+        let sumOfYears = CURRENT_YEAR - ayearOfBirth 
+
+    
+        //Виводимо отриманий результат
+        document.write(`<div class="txt">На момент поточного 2023 року вам ${sumOfYears} років</div>
+        <div class="txt">Ваш рік народження 1 січня ${ayearOfBirth}</div>
+        `)
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

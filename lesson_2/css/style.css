@@ -1,0 +1,126 @@
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+li {
+	list-style: none;
+}
+img {
+	vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+html,
+body {
+	height: 100%;
+	line-height: 1;
+}
+textarea,
+button,
+input {
+	font-weight: inherit;
+	font-size: inherit;
+	color: inherit;
+	font-family: inherit;
+}
+button {
+	cursor: pointer;
+	background-color: inherit;
+}
+
+/* налаштування для боди */
+.wrapper {
+	overflow: clip;
+	min-height: 100%;
+	/* position: relative; */
+
+	display: flex;
+	flex-direction: column;
+}
+
+.wrapper > main {
+	flex-grow: 1;
+}
+
+body{
+  max-width: 1440px;
+  background-color: #B58D26;
+}
+.main{
+  padding: 100px 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.main :not(:last-child){
+  margin-bottom: 30px;
+} 
+.title{
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #362A0B;
+}
+.txt{
+  font-size: 22px;
+}
+.txt:not(:last-child){
+  margin-bottom: 30px;
+}
+img{
+  margin-bottom: 30px;
+}
+.cards{
+  border: 1px #362A0B solid;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+.link{
+  display: block;
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #362A0B;
+  transition: color 0.3s;
+}
+.link:hover{
+  color: antiquewhite;
+  transition: color 0.3s;
+}
+.inner{
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  border: 1px #362A0B solid;
+  border-radius: 5px;
+}
+.inner div{
+  padding: 5px 10px;
+  /* border: 1px #362A0B solid; */
+}
+
+.inner p:not(:last-child){
+  margin-bottom: 20px;
+  border-bottom: 1px #362A0B solid;
+}
+.price__tag{
+  border: 1px #362A0B solid;
+  padding: 10px 15px;
+  background-color: antiquewhite;
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+}

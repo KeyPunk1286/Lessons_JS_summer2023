@@ -1,0 +1,25 @@
+
+.maine {
+
+		&__container {
+		}
+}
+.text {
+  
+
+		&__block {
+		}
+}
+.block-text :not(:last-child){
+  margin-bottom: rem(30);
+		&__title {
+		}
+
+		&__contante {
+		}
+}
+.script {
+
+		&__block {
+		}
+}

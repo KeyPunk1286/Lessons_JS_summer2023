@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Zavdania_0</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+        <div class="maine__container">
+            <div class="maine__cards cards">
+              <a href="index.html" class="cards__title">Завдання ..... 0 (Повернення на головну)</a>
+              <div class="cards__txt">З клавіатури вводяться імена двох дітей та кількість у них цукерок. 
+                Вивести на екран ім’я тієї дитини, у якої кількість цукерок є більшою, 
+                або вивести, що кількість однакова.</div>
+            </div>
+            <div class="st__block block-st">
+              <div class="block-st__title">Відповідь :</div>
+              <script>
+                // Воодимо необхідні данні
+                let firstName = prompt('Ім`я першої дитини')
+                let quantityCandyFirst = parseInt(prompt('Введіть кількість цукерок першої дитини', '0'))
+                let secondName = prompt('Ім`я другої дитини')
+                let quantityCandySecond = parseInt(prompt('Введіть кількість цукерок другої дитини', '0'))
+
+
+                // Знаходимо результат
+                if(quantityCandyFirst > quantityCandySecond) document.write(`<div class="sj-text">Більщість цукерок у ${firstName}</div>`)
+                else if(quantityCandyFirst < quantityCandySecond) document.write(`<div class="sj-text">Більщість цукерок у ${secondName}</div>`)
+                else document.write(`<div class="sj-text">Кількість цукерок у ${firstName} і у ${secondName} однакова :)</div>`)
+
+              </script>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"></footer>
+    
+</div>
+</body>
+</html>

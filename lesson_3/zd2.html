@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Zavdania_2</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+        <div class="maine__container">
+            <div class="maine__cards cards">
+              <a href="index.html" class="cards__title">Завдання ..... 2 (Повернення на головну)</a>
+              <div class="cards__txt">Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число 
+                за 2 спроби.</div>
+            </div>
+            <div class="st__block block-st">
+              <div class="block-st__title">Відповідь :</div>
+              <script>
+                "use strict"
+                // Воодимо необхідні данні
+                let minNumber = 1
+                let maxNumber = 5
+                let calcSum = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+                let anyEnteredNumber = parseInt(prompt(`Введіть число від 1 до 5`, '0'))
+
+
+                //мені не вдалось зробити перед if змінні... щоб використовувати в середені умов
+                // і потім виводити в одному alert() або document.write()
+                // видавало мені undefined 
+
+
+                // Знаходимо результат
+                if (anyEnteredNumber !== calcSum) {  
+                  alert('спробуйте ще разочок') 
+                  anyEnteredNumber = parseInt(prompt(`Введіть число від 1 до 5 `, '0'))
+                  console.log(calcSum);
+                    if (anyEnteredNumber !== calcSum) 
+                      document.write('<div class="sj-text">Вибачте, може наступного разу</div>')
+                    
+                    else 
+                      document.write('<div class="sj-text">Друга спроба вдала!! BRAVO</div>')
+                  }
+                else 
+                  document.write('<div class="sj-text">Bravo Ви ВГАДАЛИ!</div>')
+              </script>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"></footer>
+    
+</div>
+</body>
+</html>

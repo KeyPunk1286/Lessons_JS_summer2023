@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Zavdania_6</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+        <div class="maine__container">
+            <div class="maine__cards cards">
+              <a href="index.html" class="cards__title">Завдання ..... 6 (Повернення на головну)</a>
+              <div class="cards__txt">З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься</div>
+            </div>
+            <div class="st__block block-st">
+              <script>
+                // Воодимо необхідні данні
+                let monthNumber = parseInt(prompt('Введіть номер місяця', 'Від 1 до 12'))
+
+                // Знаходимо результат
+                let resultMessage
+                switch (true) {
+                  case monthNumber === 1 || monthNumber === 2 || monthNumber === 12 : resultMessage = 'зимовї'                   
+                    break;
+                  case monthNumber === 3 || monthNumber === 4 || monthNumber === 5 : resultMessage = 'весняної'                   
+                    break;
+                  case monthNumber === 6 || monthNumber === 7 || monthNumber === 8 : resultMessage = 'літньої'                   
+                    break;
+                  case monthNumber === 9 || monthNumber === 10 || monthNumber === 11 : resultMessage = 'осінньої'                   
+                    break;
+                
+                  default: resultMessage = 'невідома категорія'
+                    break;
+                }
+
+                // Виводимо результат
+                document.write(`<div class="sj-text">Цей місяць відноситься до : ${resultMessage} пори року</div>`)
+                console.log(resultMessage);
+                
+              </script>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"></footer>
+    
+</div>
+</body>
+</html>

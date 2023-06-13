@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Zavdania_5</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+        <div class="maine__container">
+            <div class="maine__cards cards">
+              <a href="index.html" class="cards__title">Завдання ..... 5 (Повернення на головну)</a>
+              <div class="cards__txt">З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.</div>
+            </div>
+            <div class="st__block block-st">
+              <script>
+                // Воодимо необхідні данні
+                let dayWeekNumber = parseInt(prompt('Введіть номер дня тижня', 'Від 1 до 7'))
+
+                // Знаходимо результат
+                let resultMessage
+                switch (dayWeekNumber) {
+                  case 1 : resultMessage = 'понеділок'                   
+                    break;
+                  case 2 : resultMessage = 'вівторок'                   
+                    break;
+                  case 3 : resultMessage = 'середа'                   
+                    break;
+                  case 4 : resultMessage = 'четвер'                   
+                    break;
+                  case 5 : resultMessage = 'п"ятниця'                   
+                    break;
+                  case 6 : resultMessage = 'субота'                   
+                    break;
+                  case 7 : resultMessage = 'неділя'                   
+                    break;
+                
+                  default: resultMessage = 'невідома категорія'
+                    break;
+                }
+
+                // Виводимо результат
+                document.write(`<div class="sj-text">Назва дня : ${resultMessage}</div>`)
+                console.log(resultMessage);
+                
+              </script>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"></footer>
+    
+</div>
+</body>
+</html>

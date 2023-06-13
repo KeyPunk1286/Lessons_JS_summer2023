@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Zavdania_3</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+        <div class="maine__container">
+            <div class="maine__cards cards">
+              <a href="index.html" class="cards__title">Завдання ..... 3 (Повернення на головну)</a>
+              <div class="cards__txt">Зклавіатури вводиться вік людини. Вивести на екран ким він є 
+                (дитиною у садочку, школярем, студентом, працівником, пенсіонером).</div>
+            </div>
+            <div class="st__block block-st">
+              <script>
+                // Воодимо необхідні данні
+                let enteringPersonsAge = parseFloat(prompt('Введіть вік людини'))
+
+                // Знаходимо результат
+                let resultMessage
+                if (enteringPersonsAge <= 6) 
+                resultMessage = `Дитина ще у садочку`
+                else if (enteringPersonsAge >= 7 && enteringPersonsAge < 17)
+                resultMessage = `Дитина ще школяр`
+                else if (enteringPersonsAge >= 18 && enteringPersonsAge < 22)
+                resultMessage = `Людина вже студент`
+                else if (enteringPersonsAge >= 23 && enteringPersonsAge < 60)
+                resultMessage = `Людина працівник`
+                else resultMessage = `Людина пенсіонер`
+
+                // Виводимо результат
+                document.write(`<div class="sj-text">Вивод: ${resultMessage}</div>`)
+                console.log(resultMessage);
+                
+              </script>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"></footer>
+    
+</div>
+</body>
+</html>

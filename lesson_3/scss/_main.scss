@@ -1,0 +1,63 @@
+//===================================== Main ======================================//
+.main {
+}
+.maine {
+
+		&__container {
+      padding-top: rem(100);
+		}
+
+		&__cards {
+		}
+}
+.cards {
+  border: 1px var(--text-primary) solid;
+  border-radius: 5px;
+  padding: rem(15) rem(20);
+  margin-bottom: rem(40);
+
+		&__title {
+      display: block;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: rem(30);
+      transition: color 0.5s; 
+      @media (any-hover: hover){
+        &:hover{
+          color: antiquewhite;
+          transition: color 0.3s;
+        }
+      }
+		}
+
+		&__txt {
+      
+      font-weight: 400;
+      font-size: rem(20);
+
+		}
+}
+.cards :not(:last-child){
+  margin-bottom: rem(30);
+}
+
+
+//=========================================== Скрипт ==================================//
+.st {
+
+  &__block {
+  }
+}
+.block-st {
+
+  &__title {
+    font-weight: 400;
+    font-size: rem(20);
+  }
+}
+
+
+.sj-text{
+  font-size: rem(22);
+
+}

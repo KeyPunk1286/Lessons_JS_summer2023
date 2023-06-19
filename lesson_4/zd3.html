@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 3 (Link)</a
+            >
+            <div class="cards__txt">
+              Створити 10 елементів для введення цін продуктів.
+            </div>
+          </div>
+          <script>
+            let product = "";
+            for (let i = 1; i <= 10; i++) {
+              product += `Product # ${i} <input class="instyle" placeholder="ведіть ціну" type="text"> <br>`
+            }
+            document.write(`<div class="gs">${product}</div>`)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

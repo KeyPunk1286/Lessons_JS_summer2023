@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:500,600,700&display=swap");
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+html,
+body {
+  height: 100%;
+  line-height: 1;
+}
+
+textarea,
+button,
+input {
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  background-color: inherit;
+}
+
+.wrapper {
+  overflow: clip;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper > main {
+  flex-grow: 1;
+}
+
+:root {
+  --primary: #0a9396;
+  --secondary: #94d2bd;
+  --accent: #0090c1;
+  --inverse: #ffff3f;
+  --bg-primary: #f7df1e;
+  --bg-secondary: #7678ed;
+  --bg-accent: #4cc9f0;
+  --bg-inverse: #2d00f7;
+  --text-primary: #080708;
+  --text-secondary: #080708;
+  --text-accent: #e8eddf;
+  --text-inverse: #e8eddf;
+}
+
+body {
+  max-width: 90rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  font-weight: 500;
+  font-family: "Inter";
+}
+
+[class*=__container] {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 0rem 0.9375rem;
+}
+
+.main__container {
+  padding-top: 6.25rem;
+}
+.cards {
+  border: 1px #080708 solid;
+  border-radius: 5px;
+  padding: 0.625rem 0.9375rem;
+  margin-bottom: 1.875rem;
+}
+.cards__title {
+  display: block;
+  font-size: 1.875rem;
+  transition: color 0.5s;
+}
+.cards__title:hover {
+  color: rgb(180, 178, 176);
+  transition: color 0.5s;
+}
+.cards__txt {
+  font-size: 1.375rem;
+}
+
+.cards :not(:last-child) {
+  margin-bottom: 1.875rem;
+}
+
+.gs {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.gs :not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+
+.styleli {
+  list-style: square;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.styleli:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+
+.instyle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  border: 1px #080708 solid;
+  border-radius: 5px;
+  background-color: var(--bg-primary);
+}

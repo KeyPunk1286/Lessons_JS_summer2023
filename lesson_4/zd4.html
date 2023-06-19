@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 4 (Link)</a
+            >
+            <div class="cards__txt">
+              Користувача поступово вводить показники температури протягом року. Знайти середню температуру
+            </div>
+          </div>
+          <script>
+            let annualTemperature = 0, resultMessage 
+            for (let i = 1; i <= 12; i++) {
+              let temperatureIndicatorsEnter = parseFloat(prompt(`Введіть показник температури за ${i} місяць`))
+              annualTemperature += temperatureIndicatorsEnter 
+              let calc = annualTemperature / 12
+              resultMessage = calc
+            }
+            document.write(`Середня температура за рік ${resultMessage.toFixed(2)} градусів`)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

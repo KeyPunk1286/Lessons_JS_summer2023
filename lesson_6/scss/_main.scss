@@ -1,0 +1,55 @@
+//===================================== Main ======================================//
+.main {
+
+  &__container {
+    padding-top: rem(100);
+  }
+
+  &__cards {
+  }
+}
+.cards {
+  border: 1px #080708 solid;
+  border-radius: 5px;
+  padding: rem(10) rem(15);
+  margin-bottom: rem(30);
+  &__title {
+    display: block;
+    font-size: rem(30);
+    transition: color 0.5s;
+    &:hover{
+      color: rgb(180, 178, 176);
+      transition: color 0.5s;
+    }
+  }
+
+  &__txt {
+    font-size: rem(22);
+  }
+}
+.cards :not(:last-child){
+  margin-bottom: rem(30);
+}
+
+.gs{
+  font-size: rem(20);
+  font-weight: 700;
+}
+.gs :not(:last-child){
+  margin-bottom: rem(20); 
+}
+.styleli{
+  list-style: square;
+  font-size: rem(20);
+  font-weight: 700;
+}
+.styleli:not(:last-child){
+  margin-bottom: rem(10);
+}
+.instyle{
+  font-size: rem(20);
+  font-weight: 500;
+  border: 1px #080708 solid;
+  border-radius: 5px;
+  background-color: var(--bg-primary);
+}

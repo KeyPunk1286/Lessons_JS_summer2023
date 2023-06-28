@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 1 (Link)</a
+            >
+            <div class="cards__txt">
+              Створити окремі функції, які для 4 чисел знаходять:
+                <ul>
+                  <li>1)суму;</li>
+                  <li>2)добуток;</li>
+                  <li>3)середнє арифметичне;</li>
+                  <li>4)мінімальне значення.</li>
+                </ul>
+            </div>
+          </div>
+          <script>
+            // Створюємо функції
+            function getSumOfNumbers(number1, number2, number3, number4) {
+                let calcNumber = number1 + number2 + number3 + number4
+                //return calcNumber
+                document.write(`<div class="gs">Сума чисел дорівнює = ${calcNumber}</div>`)
+              }
+              function getMultiplicationOfNumbers(number1, number2, number3, number4) {
+                let calcNumber = number1 * number2 * number3 * number4
+                //return calcNumber
+                document.write(`<div class="gs">Добуток чисел = ${calcNumber}</div>`)
+              }
+              function getArithmeticalMean(number1, number2, number3, number4) {
+                let calcNumber = number1 + number2 + number3 + number4 / 4
+                //return calcNumber
+                document.write(`<div class="gs">Середнє арефметичне = ${calcNumber}</div>`)
+              }
+              function getMinimumValue(number1, number2, number3, number4) {
+                let num1, num2
+                if(number1 < number2){
+                  num1 = number1
+                  num2 = number2
+                }
+                else{
+                  num1 = number2
+                  num2 = number1
+                }
+
+                if(number3 < num1){
+                  num2 = num1
+                  num1 = number3
+                }
+                else if (number3 < num2)
+                  num2 = number3
+                
+                
+                if(number4 < num1){
+                  num2 = num1
+                  num1 = number4
+                }
+                else if(number4 < num2) num2 = number4
+
+                if( num1 < num2) document.write(`<div class="gs"> Мінімальне значення = ${num1} </div>`)
+                else document.write(`<div class="gs"> Мінімальне значення = ${num2} </div>`)
+              }
+                // Вводимо велечини
+              const enterNumber1 = parseFloat(prompt('Введіть перше число'))
+              const enterNumber2 = parseFloat(prompt('Введіть друге число'))
+              const enterNumber3 = parseFloat(prompt('Введіть третте число'))
+              const enterNumber4 = parseFloat(prompt('Введіть четверте число'))
+
+              // Запускаємо функцію
+              getSumOfNumbers(enterNumber1, enterNumber2, enterNumber3, enterNumber4)
+              getMultiplicationOfNumbers(enterNumber1, enterNumber2, enterNumber3, enterNumber4)
+              getArithmeticalMean(enterNumber1, enterNumber2, enterNumber3, enterNumber4)
+              getMinimumValue(enterNumber1, enterNumber2, enterNumber3, enterNumber4)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

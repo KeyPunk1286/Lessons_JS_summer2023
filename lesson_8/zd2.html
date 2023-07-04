@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>2 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 2 (Link)</a
+            >
+            <div class="cards__txt">
+              Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+              <ul>
+                <li>•	починаються на букву «А»;</li>
+                <li>•	перша і остання літери співпадають;</li>
+                <li>•	складаються з більше ніш 5 символів;</li>
+              </ul>
+            </div>
+          </div>
+          <script>
+
+
+            // Вводемо в масив значення
+                let carNumbers = ['AP7660EX', 'AP2103CH', 'AA5501CA', 'BX8980IO', 'A76A']
+
+
+                // Створюємо функцію з пошуком
+                function getSearchLetterA(carNumbers) {
+                  let result = 0
+                  for (let i = 0; i < carNumbers.length; i++) {
+                    if(carNumbers[i][0] === 'A') 
+                    result++
+                  }
+                  return result
+                }
+                // Запускаємо функцію
+                let resultLetterA = getSearchLetterA(carNumbers)
+                // Виводимо результат
+                document.write(`<div class="gs">Кількість номерів котрі починаються на літеру "А" = ${resultLetterA}</div>`)
+
+
+                // Створюємо Функцію
+                function getLetterMatchSearch(carNumbers) {
+                  let resultCoincidences = 0
+                  for (let i = 0; i < carNumbers.length; i++) {
+                    if (carNumbers[i][0] === carNumbers[i][carNumbers[i].length - 1]) 
+                    resultCoincidences++
+                  }
+                  return resultCoincidences
+                }
+                // Запускаємо функцію
+                let resultMatchComparison = getLetterMatchSearch(carNumbers)
+                // Виводимо результат
+                document.write(`<div class="gs">Кількість номерів у котрих перша і остання співпадає = ${resultMatchComparison}</div>`)
+
+
+
+                function getMoreLessCharacters(carNumbers) {
+                  let resultChar = 0
+                  for (let i = 0; i < carNumbers.length; i++) {
+                    if(carNumbers[i].length > 5) 
+                    resultChar++
+                  }
+                  return resultChar
+                }
+                let resultChar = getMoreLessCharacters(carNumbers)
+                document.write(`<div class="gs">Кількість номерів в котрих більше ніж 5 символів : ${resultChar}</div>`)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

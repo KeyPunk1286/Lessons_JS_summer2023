@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>4 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 4 (Link)</a
+            >
+            <div class="cards__txt">
+              Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+              <ul>
+                <li>за весь рік;</li>
+                <li>у першій половині року;</li>
+                <li>у другій половині року;</li>
+                <li>за літо;</li>
+                <li>за ІІ квартал;</li>
+                <li>за парні місяці (з парними номерами);</li>
+                <li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li>
+              </ul>
+            </div>
+          </div>
+          <script>
+
+          // Створюємо масив з потрібними значеннями
+          let paymentDataYear = [345, 355, 300, 299, 400, 425, 380, 255, 279, 310, 250, 450]
+
+          //  Створюємо функцію
+          function getAmountYear(paymentDataYear) {
+            let result = 0
+            for (let i = 0; i < paymentDataYear.length; i++) {
+              result += paymentDataYear[i]
+              
+            }
+            return result
+          }
+          // Запускаємо функці
+          let resultPaymentDataYear = getAmountYear(paymentDataYear)
+          // Виводимо результат
+          document.write(`<div class="gs">Разом за рік дорівнює =  ${resultPaymentDataYear}</div>`)
+
+          //  Створюємо функцію
+          function getFirstHalfYear(paymentDataYear) {
+            let result = 0
+            for (let i = 0; i <= 5; i++) {
+              result += paymentDataYear[i]
+              
+            }
+            return result
+          }
+          // Запускаємо функці
+          let resultFirstHalfYear = getFirstHalfYear(paymentDataYear)
+          // Виводимо результат
+          document.write(`<div class="gs">Разом за першу половину року =  ${resultFirstHalfYear}</div>`)
+
+
+          //  Створюємо функцію
+          function getSecondHalfYear(paymentDataYear) {
+            let  result = 0
+            for (let i = 6; i <= 10; i++) {
+              result += paymentDataYear[i]
+              
+            }
+            return result
+          }
+          // Запускаємо функці
+          let resultSecondHalfYear = getSecondHalfYear(paymentDataYear)
+          // Виводимо результат
+          document.write(`<div class="gs">Разом за другу половину року =  ${resultSecondHalfYear}</div>`)
+
+          
+          //  Створюємо функцію
+          function getAmountSummer(paymentDataYear) {
+            let result = 0
+            for (let i = 5; i <= 7; i++) {
+              result += paymentDataYear[i]
+              
+            }
+            return result
+          }
+          // Запускаємо функці
+          let resultAmountSummer = getAmountSummer(paymentDataYear)
+          // Виводимо результат
+          document.write(`<div class="gs">Разом за літо =  ${resultAmountSummer}</div>`)
+
+
+          //  Створюємо функцію
+          function getSecondQuarter(paymentDataYear) {
+            let result = 0
+            for (let i = 3; i <= 5; i++) {
+              result += paymentDataYear[i]
+              
+            }
+            return result
+          }
+          // Запускаємо функці
+          let resultSecondQuarter = getSecondQuarter(paymentDataYear)
+          // Виводимо результат
+          document.write(`<div class="gs">Разом за II квартал =  ${resultAmountSummer}</div>`)
+
+
+          //  Створюємо функцію
+          function getEvenMonths(paymentDataYear) {
+            let result = 0
+            for (let i = 2; i <= 11; i+=2) {
+              result += paymentDataYear[i]
+              
+            }
+            return result
+          }
+          // Запускаємо функці
+          let resultEvenMonths = getEvenMonths(paymentDataYear)
+          // Виводимо результат
+          document.write(`<div class="gs">Разом усі парні місяці =  ${resultEvenMonths}</div>`)
+
+
+          //  Створюємо функцію
+          function getMonthBeginningSeason(paymentDataYear) {
+            let result = 0
+            for (let i = 2; i <= 11; i+=3) {
+              result += paymentDataYear[i]
+              
+            }
+            return result
+          }
+          // Запускаємо функці
+          let resultMonthBeginningSeason = getMonthBeginningSeason(paymentDataYear)
+          // Виводимо результат
+          document.write(`<div class="gs">Разом за перщі місяці сезону =  ${resultMonthBeginningSeason}</div>`)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

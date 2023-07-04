@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 1 (Link)</a
+            >
+            <div class="cards__txt">
+              Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
+              <ul>
+                <li>1.. номери днів, протягом яких кількість відвідувачів була меншою за 20;</li>
+                <li>2.. номери днів, коли кількість відвідувачів була мінімальною;</li>
+                <li>3.. загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.</li>
+              </ul>
+            </div>
+          </div>
+          <script>
+            // Створюємо масив з необхідними даними
+          let weekStatistics = [15,20,15,25,255,300,356]
+            // Створюемо функцію   
+          function getDayNumberLessThan20(weekStatistics) {
+            let numberDay = []
+            for (let i = 0; i < weekStatistics.length; i++) {
+              if(weekStatistics[i] < 20) numberDay.push(i+1)
+            }
+            return numberDay
+          }
+          // Запускаємо функцію
+          let resultNumberDay = getDayNumberLessThan20(weekStatistics)
+          // Виводимо результат
+          document.write(`<div class="gs">Номера днів відвідувачів меншою за 20 є  ${resultNumberDay}-й</div>`)
+
+          // Створюемо функцію 
+          function getDayMinimumVisits(weekStatistics) {
+            let numberVisitDay = weekStatistics[0]
+            let minVisitDay = []
+            for (let i = 0; i < weekStatistics.length; i++) {
+              if(weekStatistics[i] <= numberVisitDay) 
+                minVisitDay.push(i+1)
+            }
+            return minVisitDay
+          }
+          // Запускаємо функцію
+          let resultMinVisitDay = getDayMinimumVisits(weekStatistics)
+          // Виводимо результат
+          document.write(`<div class="gs">Номера днів з найменшим відвідуванням є ${resultMinVisitDay}-й</div>`)
+
+
+            // Створюемо функцію 
+          function totalAmountVisitor(weekStatistics) {
+            let workDays = weekStatistics[0]
+            let weekend = weekStatistics[5]
+            for (let i = 1; i < weekStatistics.length; i++) {
+              if(i <= 4) workDays += weekStatistics[i]
+              else if(i === 6) weekend += weekStatistics[i]
+            }
+            return `Всього разом за робочі дні: ${workDays} клієнтів, а за вихідні: ${weekend} клієнтів`
+          }
+          // Виводимо результат
+          let resultTotalVisitor = totalAmountVisitor(weekStatistics)
+          // Виводимо результат
+          document.write(`<div class="gs"> ${resultTotalVisitor}</div>`)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

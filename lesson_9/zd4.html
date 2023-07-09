@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>4 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 4 (Link)</a
+            >
+            <div class="cards__txt">
+              Дано масив цін. Змінити цей масив так, що на ціни товарів, 
+              які більші за 1000 грн. дати 30% знижки.
+            </div>
+          </div>
+          <script>
+            let someArr = [500, 1500, 900, 2000, 950, 3000]
+            someArr.forEach((price, index, baseArrRef) => {
+              if(price > 1000) baseArrRef[index] *= 30 / 100
+            })
+            document.write(`<div class="gs">${someArr}</div>`)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

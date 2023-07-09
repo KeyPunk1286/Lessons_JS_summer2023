@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 1 (Link)</a
+            >
+            <div class="cards__txt">
+              Користувач вводить кількість елементів. Створити масив, 
+              у якому перша половина заповнена 1-цями, а друга заповнена 7-ками.
+            </div>
+          </div>
+          <script>
+            let userEnterNumber = parseInt(prompt('Введіть кількість елементів масиву'))
+            function createArr(userEnterNumber) {
+              let divide = userEnterNumber / 2
+              let arr1 = new Array(userEnterNumber).fill(1,0, divide).fill(7,divide)
+              return arr1
+            }
+            let resultCreateArr = createArr(userEnterNumber)
+            document.write(`<div class="gs">${resultCreateArr}</div>`)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>4 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 4 (Link)</a
+            >
+            <div class="cards__txt">
+              Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+              Підрахувати суму цін, що більше за 1000
+            </div>
+          </div>
+          <script>
+            let numberPapers = 15
+            let randomNumber = new Array(numberPapers) .fill(0) .map(() => 1 + Math.floor(Math.random() * 10000))
+            let sumRandomNumbers = randomNumber.reduce(
+              (preNumber, elemente) => elemente > 1000? preNumber + elemente : preNumber,
+              0
+            )
+            document.write(`Сума цін більше за 1000 = ${sumRandomNumbers} <br>`)
+            document.write(`Масив цін = ${randomNumber}`)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

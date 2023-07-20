@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>6 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання третте (Link... повернення на першу сторінку)</a
+            >
+            <div class="cards__txt">
+              Морський бій. Випадковим чином на двовимірному полі розміром 6*6 
+              розташовується 5 кораблів. Користувач стріляє вказуючи координати. 
+              Гра продовжується поки не потоплено усі кораблі або у користувача 
+              не закінчаться снаряди.
+            </div>
+          </div>
+          <script>
+            let rows = 6, colun = 6, ships = 5
+            
+            function getGenerateFiled(rows, colun, ships) {
+              let arr=[]
+              for (let row = 0; row < rows; row++) {
+                let newRow = new Array(colun).fill(0)
+                arr.push(newRow)
+              }
+              
+              for (let ship = 0; ship < ships;) {
+                const randomRowIndex = Math.floor(Math.random() * rows)
+                const randomColumnIndex = Math.floor(Math.random() * colun)
+                if (arr[randomRowIndex][randomColumnIndex] !== 1) {
+                  arr[randomRowIndex][randomColumnIndex] = 1
+                  ship++
+                }
+                
+              }
+              return arr
+            }
+            let arrFieldWithGeneratedShips = getGenerateFiled(rows, colun, ships)
+            let bullets = 5
+
+            
+              do{
+                let coordinateRowEnter = parseInt(prompt('Введіть координату по горизонталі від 1 до 6 '))
+                let coordinateColumnEnter = parseInt(prompt('Введіть координату по вертикалі від 1 до 6 '))
+                bullets--
+                if(arrFieldWithGeneratedShips[coordinateRowEnter - 1][coordinateColumnEnter - 1] === 1){
+                  arrFieldWithGeneratedShips[coordinateRowEnter - 1][coordinateColumnEnter - 1] = 'x'
+                  alert('Прямісенько у ціль по кацапах!! Браво')
+                  ships--
+                } else alert(`Нажаль кацапи ще живі у вас ще ${bullets} пуль`)
+              }while(bullets > 0 && ships > 0)
+              
+              for (let i = 0; i < arrFieldWithGeneratedShips.length; i++) {
+                document.write(`${arrFieldWithGeneratedShips[i]} <br>`)
+                
+              }
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

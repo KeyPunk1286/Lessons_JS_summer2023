@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>3 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання друге - задача 3 (Link... повернення на першу сторінку)</a
+            >
+            <div class="cards__txt">
+              Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+              сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+            </div>
+          </div>
+          <script>
+            // Створюємо масив з необхідними значеннями
+            let arrStoreProfit = [
+              [140, 201, 150, 300, 110, 80, 70],
+              [115, 55, 230, 170, 255, 180, 206],
+              [150, 245, 140, 400, 85, 300, 25],
+              [80, 430, 190, 700, 135, 360, 305],
+              [40, 250, 130, 260, 190, 210, 20],
+            ]
+            let newArrLessThanTwoHundred = []
+            for (let week = 0; week < arrStoreProfit.length; week++) {
+              for (let income = 0; income < 7; income++) {
+                if(arrStoreProfit[week][income] > 200)
+                newArrLessThanTwoHundred.push(arrStoreProfit[week][income])
+              }
+              
+            }
+            for (let i = 0; i < arrStoreProfit.length; i++) {
+              document.write(`${arrStoreProfit[i]} <br>`)
+            }
+            document.write(newArrLessThanTwoHundred)
+          </script>
+          
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>0 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання перше (Link...повернення на першу сторінку)</a
+            >
+            <div class="cards__txt">
+              Знайти суми елементів у вказаній області 
+              (масиви розділені на 4 рівні частини -  не звертаємо 
+              увагу на криві малюнки  )
+            </div>
+          </div>
+          <script>
+          let someArrNumbers = [
+            [7, 9, 3,  4,  14, 15, 6, 10],
+            [5, 3, 9,  12, 4,  1,  7, 12],
+            [6, 4, 31, 23, 11, 25, 2, 1],
+            [8, 8, 14, 34, 1,  19, 7, 13],
+          ]
+          // Створюємо функцію для знаходження суми елементів у вказаній області 
+          function getSumResult(rowStart, rowEnd, columnStart, columnEnd) {
+            let sum = 0
+            for (let row = rowStart; row < rowEnd; row++) {
+            for (let column = columnStart; column < columnEnd; column++) {
+              sum += someArrNumbers[row][column]
+            }
+          }
+          return sum
+          }
+          // Область перша
+          let rowStarNum = 0, rowEndNum = 2, columnStartNum = 0, columnEndNum = 4
+          let resultVariantOne = getSumResult(rowStarNum, rowEndNum, columnStartNum, columnEndNum)
+          // Область друга
+          columnStartNum = 4, columnEndNum = 8
+          let resultVariantTwo = getSumResult(rowStarNum, rowEndNum, columnStartNum, columnEndNum)
+          // Треття область
+          rowStarNum = 2, rowEndNum = 4, columnStartNum = 0, columnEndNum = 4
+          let resultVariantThree = getSumResult(rowStarNum, rowEndNum, columnStartNum, columnEndNum)
+          // Четверта область
+          columnStartNum = 4, columnEndNum = 8
+          let resultVariantFourth =  getSumResult(rowStarNum, rowEndNum, columnStartNum, columnEndNum)
+
+          // сума парних рядків
+          let sumEvenRow = 0
+          for (let row = 1; row < someArrNumbers.length; row+=2) {
+            for (let column = 0; column < someArrNumbers[row].length; column++) {
+              sumEvenRow += someArrNumbers[row][column]
+              
+            }
+            
+          }
+          // сума непарних рядків
+          let sumOddColumn = 0
+          for (let row = 0; row < someArrNumbers.length; row++) {
+            for (let column = 0; column < someArrNumbers[row].length; column+=2) {
+              sumOddColumn += someArrNumbers[row][column]
+              
+            }
+            
+          }
+          // у парних рядках - не парні стовпці
+          let sumEvenRowOddColumn = 0
+          for (let row = 1; row < someArrNumbers.length; row+=2) {
+            for (let column = 0; column < someArrNumbers[row].length; column+=2) {
+              sumEvenRowOddColumn += someArrNumbers[row][column]
+            }
+          }
+          // у непарних рядках - парні стовпці
+          let sumOddRowEvenColumn = 0
+          for (let row = 0; row < someArrNumbers.length; row+=2) {
+            for (let column = 1; column < someArrNumbers[row].length; column+=2) {
+              sumOddRowEvenColumn += someArrNumbers[row][column]
+            }
+          }
+          document.write(`
+          Сума лівої верхньої частини дорівнює ${resultVariantOne} <br>
+          Сума правої верхньої частини дорівнює ${resultVariantTwo} <br>
+          Сума лівої нижньої частини дорівнює ${resultVariantThree} <br>
+          Сума правої нижньої частини дорівнює ${resultVariantFourth} <br>
+          Сума парних рядків дорівнює ${sumEvenRow} <br>
+          Сума непарних рядків дорівнює ${sumOddColumn} <br>
+          Сума парних рядків - непарні стовпці дорівнює ${sumEvenRowOddColumn} <br>
+          Сума непарних рядків і парні стовпці дорівнює ${sumOddRowEvenColumn} <br>
+          `)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+  </html>
+  

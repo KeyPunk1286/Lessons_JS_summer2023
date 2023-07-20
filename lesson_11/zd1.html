@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання друге - задача 1 (Link... повернення на першу сторінку)</a
+            >
+            <div class="cards__txt">
+              Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+              загальний прибуток кожного масиву за тиждень;
+            </div>
+          </div>
+          <script>
+            // Створюємо масив з необхідними значеннями
+            let arrStoreProfit = [
+              [540, 600, 495, 300, 900, 1000, 800],
+              [140, 200, 595, 500, 700, 900, 750],
+              [150, 100, 320, 250, 730, 1100, 600],
+              [80, 430, 500, 700, 1200, 1350, 1800],
+              [40, 50, 730, 960, 570, 200, 850],
+            ]
+            let arrSumAllWeek = []
+            // Створюємо цикл для масивів
+            for (let week = 0; week < arrStoreProfit.length; week++) {
+              let sum = 0
+              // створюємо цикл для знаходження суми за тиждень
+              for (let weekSum = 0; weekSum < 7; weekSum++) {
+                // знаходимо суму
+                sum += arrStoreProfit[week][weekSum]
+                
+              }
+              // Заповнюємо результат в масив
+              arrSumAllWeek.push(sum)
+            }
+            let arrShop = [
+              'першого магазину(масиву)', 
+              'другого магазину(масиву)', 
+              'третього магазину(масиву)', 
+              'четвертого магазину(масиву)',
+              'п"ятого магазину(масиву)',
+            ]
+            // Вивод результату
+            for (let i = 0; i < 5; i++) {
+              document.write(`Сума ${arrShop[i]} = ${arrSumAllWeek[i]} <br>`)
+            }
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

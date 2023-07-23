@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>4 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 3 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Дано масив імен. Застосовуючи відповідне сортування 
+              та бінарний пошук визначити, чи є у масиві ім’я «Olga» 
+              і під яким індексом.
+            </div>
+          </div>
+          <script>
+            // Створюємо масив з іменами
+              let arrName = ['Olga', 'Oleksandr', 'Anabel', 'Johnny', 'Roman', 'Svetlana', 'Volodymyr', 'Bob', 'Lana', 'Lizzy']
+              // сортируємо масив для подальшого бінального пошуку
+              let newArrName = arrName.sort()
+              const requiredSearch = 'Olga'
+              // Створюємо функцію з бінарним пошуком
+              function getBinarySearch(arr, searchElement) {
+                let start = 0
+                let end = arr.length - 1
+                while(start <= end){
+                  const maddle = Math.floor((start + end) / 2)
+                  if(arrName[maddle] === searchElement) return maddle
+                  if(arrName[maddle] < searchElement) start = maddle + 1
+                  if(arrName[maddle] > searchElement) end = maddle - 1
+                }
+                return - 1
+              }
+              // Запускаємо функцію
+              let result = getBinarySearch(newArrName, requiredSearch)
+              // Виводимо результат
+              if(result !== -1) 
+              document.write(`Так ім'я ${requiredSearch} є у масиві під індексом [ ${result} ]`)
+              else document.write(`Ім'я ${requiredSearch}  у масиві нажаль не знайдено`)
+              
+          </script>
+          
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

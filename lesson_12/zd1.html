@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 1 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Дано масив 30 випадкових цілих чисел. 
+              Підрахувати скільки було обмінів під час 
+              сортування бульбашкою (Разом з 4 завданням)
+            </div>
+          </div>
+          <script>
+            // створюємо необхідні данні для рандомного числа
+            const minNum = 1
+            const maxNum = 50
+            // створюємо функцію рандомного числа
+            function getRandomNum(minNum, maxNum) {
+              return  minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+            }
+            // Створюємо функцію для  створювання ) одновимірного масиву 
+            function getArrRandomNumber( minNum, maxNum) {
+              let arr = []
+              for (let i = 0; i < 30; i++) {
+                let arrFillNumber = getRandomNum(minNum, maxNum)
+                arr.push(arrFillNumber)
+              }
+              return arr
+            }
+            // запускаємо функцію
+            
+            let arrRandomNumber = getArrRandomNumber( minNum, maxNum)
+            document.write(`Не відсортерований масив: [${arrRandomNumber}] <br>`)
+            // Створюємо функцію з методом сортування Бульбашка
+            function getSumOfxExchange(arrRandomNumber) {
+              let changet
+              let cunter = 0
+              let stepExchange = 1
+              do{
+                changet = false
+                for (let i = 1; i < arrRandomNumber.length; i++) {
+                  if (arrRandomNumber[i -1] > arrRandomNumber[i]) {
+                    let temp = arrRandomNumber[i -1]
+                    arrRandomNumber[i -1] = arrRandomNumber[i]
+                    arrRandomNumber[i] = temp
+                    cunter++
+                    changet = true
+                    document.write(`Обмін ${stepExchange++} [${arrRandomNumber}] <br>`)
+                  }
+                  
+                }
+              }while(changet)
+              return cunter
+            }
+            // запускаємо функцію бульбашка
+            let finalSum = getSumOfxExchange(arrRandomNumber)
+            // Виводимо результат
+            document.write(`
+            Обмінів під час сортування методом "Бульбашка = ${finalSum}" <br>
+            Сортування масиву : ${arrRandomNumber}
+            `)
+
+            </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

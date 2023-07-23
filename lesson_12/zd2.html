@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>2 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 2 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Дано масив 30 випадкових цілих чисел. 
+              Підрахувати скільки було обмінів під час 
+              сортування змішуванням. (Разом з 4 завданням)
+            </div>
+          </div>
+          <script>
+            // створюємо необхідні данні для рандомного числа
+            const minNum = 1
+            const maxNum = 50
+            // створюємо функцію рандомного числа
+            function getRandomNumber(minNum, maxNum) {
+              return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+            }
+            // створюємо фкнкцію одновимірного масиву
+            function getNewArr(minNum, maxNum) {
+              let arr = []
+              for (let i = 0; i < 30; i++) {
+                let newNum = getRandomNumber(minNum, maxNum)
+                arr.push(newNum)
+              }
+              return arr
+            }
+            // створюємо функцію шейкер сортування
+            let newArrRandomNum = getNewArr(minNum, maxNum) 
+
+            document.write(`Не відсортерований масив [${newArrRandomNum}] <br>`)
+
+            function getShakerSort(newArrRandomNum) {
+              let left = 0, right = newArrRandomNum.length - 1, cunter = 0, stepExchange = 1
+              while (left < right) {
+                for (let i = left; i < right; i++) {
+                  if (newArrRandomNum[i] > newArrRandomNum[i+1] ) {
+                    let temp = newArrRandomNum[i]
+                    newArrRandomNum[i] = newArrRandomNum[i+1]
+                    newArrRandomNum[i+1] = temp
+                    cunter++
+                    document.write(`Обмін ${stepExchange++} [${newArrRandomNum}] <br>`)
+                  }
+                  
+                }
+                right--
+                for (let i = right; i > left; i--) {
+                  if(newArrRandomNum[i-1] > newArrRandomNum[i]){
+                    let temp = newArrRandomNum[i]
+                    newArrRandomNum[i] = newArrRandomNum[i-1]
+                    newArrRandomNum[i-1] = temp
+                    cunter++
+                    document.write(`Обмін ${stepExchange++} [${newArrRandomNum}] <br>`)
+                  }
+                }
+                left++
+              }
+              return cunter
+            }
+            let result = getShakerSort(newArrRandomNum)
+            // виводимо результат
+            console.log(result);
+            console.log(newArrRandomNum);
+            document.write(`
+            Кількість обмінів при сортуванні методом "Шейкер" = ${result} <br>
+            отсортирований масив : ${newArrRandomNum}
+            `)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

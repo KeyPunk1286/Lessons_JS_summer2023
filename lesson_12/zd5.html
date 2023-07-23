@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>5 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 4 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Дано масив імен. Застосовуючи відповідне сортування 
+              та бінарний пошук визначити, чи є у масиві ім’я довжиною 
+              5 символів і під яким індексом.
+            </div>
+          </div>
+          <script>
+            // Створюємо масив з іменами
+            let arrName = ['Olga', 'Oleksandr', 'Anabel', 'Johnny', 'Roman', 'Svetlana', 'Volodymyr', 'Bob', 'Lana', 'Lizzy']
+            // Сортируємо масив для бінарного пошуку
+            let sortArrName = arrName.sort((a,b) => {
+              if(a.length < b.length) return -1
+              if(a.length > b.length) return 1
+              return 0
+            })
+            const requiredSearchLength = 5
+            // Створюємо функцію з бінарним пошуком
+            function getBinarySearch(arr, search) {
+              let start = 0
+              let end = arr.length -1
+              while(start <= end){
+                const middle = Math.floor((start + end) /2)
+                if(arr[middle].length === search) return middle
+                if(arr[middle].length < search) start = middle +1
+                if(arr[middle].length > search) end = middle -1
+              }
+              return -1
+            }
+            // Запускаємо функцію
+            let result = getBinarySearch(sortArrName, requiredSearchLength)
+            // Виводимо результат
+            if(result !== -1)
+            document.write(`
+            Так! ім'я з такою кількістю символів є під індексом ${result} <br>
+            масив імен : ${sortArrName}
+            `)
+            else document.write(`
+            Нажаль, такої кількості символів ім'я немає у масиві <br>
+            масив з іменами : [ ${sortArrName} ]
+            `)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

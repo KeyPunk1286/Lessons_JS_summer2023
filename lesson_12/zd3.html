@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>3 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 3 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Дано масив 30 випадкових цілих чисел. 
+              Підрахувати скільки було обмінів під час 
+              сортування включеннями. (Разом з 4 завданням)
+            </div>
+          </div>
+          <script>
+            // створюємо необхідні велечини
+            const minNum = 1
+            const maxNum = 50
+            // створюємо функцію для рандомних чисел
+            function getRandomNum(minNum, maxNum) {
+              return minNum + Math.floor(Math.random() * (maxNum - minNum +1))
+            }
+            // Створюємо функцію для одновимірного маасиву 
+            function getArrWithRandomNum(minNum, maxNum) {
+              let arr = []
+              for (let i = 0; i < 30; i++) {
+                let newNum = getRandomNum(minNum, maxNum)
+                arr.push(newNum)
+              }
+              return arr
+            }
+            let arrWithRundomNumber = getArrWithRandomNum(minNum, maxNum)
+
+            document.write(`Не відсортований масив: [${arrWithRundomNumber}] <br>`)
+            // створюємо функцію з сортуванням методом "Включення"
+            function getInclusionSort(arrWithRundomNumber) {
+              let  cunter = 0, stepExchange = 1
+              for (let k = 1; k < arrWithRundomNumber.length; k++) {
+                let  key = arrWithRundomNumber[k]
+                let i = k-1
+                while (i >= 0 && arrWithRundomNumber[i] > key) {
+                  arrWithRundomNumber[i+1] = arrWithRundomNumber[i]
+                  i = i-1
+                  cunter++
+                  document.write(`Обмін ${stepExchange++} [${arrWithRundomNumber}] <br>`)
+                }
+                arrWithRundomNumber[i+1] = key
+              }
+              return cunter
+            }
+            // Запускаємо функцію
+            let result = getInclusionSort(arrWithRundomNumber)
+            // виводимо результат
+            console.log(result);
+            console.log(arrWithRundomNumber);
+            document.write(`
+            Кількість обмінів при сортуванні методом "Вклбючення" = ${result} <br>
+            Відсортований масив = ${arrWithRundomNumber}
+            `)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

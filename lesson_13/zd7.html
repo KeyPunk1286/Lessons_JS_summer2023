@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>6 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 6 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Через 20 секунд перейти на сайт ukr.net. Для цього 
+              через 20 секунд після відкриття треба виконати команду:
+              window.location.href = 'https://www.ukr.net'
+            </div>
+          </div>
+          <script>
+            function transitionSite(time) {
+              setTimeout(() => window.location.href = 'https://www.ukr.net', time)
+            }
+            let startTimer = transitionSite(20000)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

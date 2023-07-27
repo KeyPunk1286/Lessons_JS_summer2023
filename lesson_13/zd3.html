@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>2 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 2 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Реалізувати бінарний пошук (розглядали на попередніх уроках) 
+              з використанням рекурсивного алгоритму.
+            </div>
+          </div>
+          <script>
+            let someArr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+            let findNum = parseInt(prompt('Ведіть потрібний вам номер від 1 до 15'))
+            function getBinarCyrcleSearch(arr, el, start, end) {
+              const middle = Math.floor((start + end) /2)
+              if(start <= end){
+                if(arr[middle] === el) return middle
+                if(arr[middle] < el) return getBinarCyrcleSearch(arr, el, middle+1, end)
+                if(arr[middle] > el) return getBinarCyrcleSearch(arr, el, start, middle-1)
+              }
+              return -1
+            }
+            let result = getBinarCyrcleSearch(someArr, findNum, 0, someArr.length -1)
+            document.write(`
+            Елемент котрий шукали: ${findNum}<br> 
+            Номер індексу: [${result}] <br>
+            Упорядкований масив: ${someArr} 
+            `)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

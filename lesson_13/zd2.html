@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 1 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Нехай x_0=1, x_i=x_i-1+2i , де i=1,2,...  Визначити x_10 . 
+              Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+            </div>
+          </div>
+          <script>
+            let someNum = 10
+            function getRecursionMethod(n) {
+              if(n === 0) return 1
+              else return getRecursionMethod(n-1) + 2 * n
+            }
+            let resultRecursionMethod = getRecursionMethod(someNum)
+            document.write(`Резуольтат методом рекурсіі = ${resultRecursionMethod} <br>`)
+            
+            // Так само з циклами =========================//======================//
+            function getSumCycle(someNum) {
+              let x = 1
+              for (let i = 0; i <= someNum; i++) {
+                x += 2 * i
+                
+              }
+              return x
+            }
+            let resultCycle = getSumCycle(someNum)
+            document.write(`Результат циклом = ${resultCycle}`)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

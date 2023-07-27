@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>4 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 4 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              З використанням замикань розробити ітератор, тобто 
+              функцію, що буде поступово за окремими викликами 
+              видавати по одну букву наперед заданого слова. З 
+              використанням нього розробити гру «Прекладач». 
+              Виводимо для користувача опис цього слова і по одну 
+              букву користувач вводить переклад цього слова. 
+              Підрахувати кількість вгаданих букв.
+            </div>
+          </div>
+          <script>
+            let task = alert('Без цього не знімають жодне кіно, і без цього слова мова програмування інша 6(літер)')
+            let guessWord = 'script'
+            
+
+            function getLetterIterator(guessWord) {
+              let currentControl = guessWord.length -1
+              function iterator() {
+                currentControl++
+                if(currentControl === guessWord.length) currentControl = 0
+                return guessWord[currentControl]
+              }
+              return iterator
+            }
+            
+            
+            function gameOfWord(guessWord) {
+              let  numberGuessesLetter = 0
+              let iteratorLetter = getLetterIterator(guessWord)
+              for (let i = 0; i < guessWord.length; i++) {
+                let enterLetter = prompt(`Введіть ${i +1} літеру слова`)
+                if(enterLetter === guessWord[i]){
+                  document.write(`[${iteratorLetter()}]`)
+                  numberGuessesLetter++
+                }
+                else return document.write(`
+                Нажаль ви помилилися літерою, і слово не буде вірним <br>
+                кількість вгаданих літер ${numberGuessesLetter}
+                `)
+              }
+              
+            }
+            
+            let gameStart = gameOfWord(guessWord)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

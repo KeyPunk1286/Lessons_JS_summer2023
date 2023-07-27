@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>3 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 3 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              З використанням замикань розробити ітератор, тобто функцію, 
+              що буде поступово за окремими викликами видавати по одне 
+              значення від заданого мінімального до заданого максимального. 
+              Якщо значення досягне максимального, то наступним буде 
+              мінімальне значення. З використанням цієї функції реалізувати 
+              перебір номерів місяців. 
+            </div>
+          </div>
+          <script>
+          
+          let monthArray = [
+              'Січень',
+              'Лютий',
+              'Березень',
+              'Квітень',
+              'Травень',
+              'Червень',
+              'Липень', 
+              'Серпень', 
+              'Вересень', 
+              'Жовтень', 
+              'Листопад', 
+              'Грудень']
+
+            function getMonthIterator(month, max=12){
+                function getIterator() {
+                  if(month === max) month = 1
+                  else ++month
+                  return month
+                }
+                return getIterator
+            }
+
+            function getResultMonthView(arr) {
+              let nextMounth = getMonthIterator(0)
+              for (let i = 0; i < arr.length; i++) {
+                document.write(`${nextMounth()} - ${arr[i]}<br>`)
+                
+              }
+            }
+            let result = getResultMonthView(monthArray)
+          </script>
+          
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

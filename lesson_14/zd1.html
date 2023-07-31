@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 1 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Описати масив об’єктів – сайтів розроблених компанією з такими властивостями:
+              <ul>
+                <li>⦁	назва компанії на час розробки (назву періодично змінюють)</li>
+                <li>⦁	власник компанії</li>
+                <li>⦁	споснсори (масив спонсорів)
+                  <ul>
+                    <li>* прізвище спонсора</li>
+                    <li>* ім’я  спонсора</li>
+                    <li>* сума вкладень спонсора</li>
+                  </ul>
+                </li>
+                <li>⦁	рік випуску</li>
+                <li>⦁	вартість сайту</li>
+              </ul>
+            </div>
+          </div>
+          <script>
+            let arraySite = [
+              {
+                companyName: 'Ice cream',
+                ownerCompany: 'Roman Romanovsky',
+                sponsors: {
+                  secondNameSponsor: 'Adamsky',
+                  firstNameSponsor: 'James',
+                  investmentAmount: 150000
+                },
+                graduationYear: 2000,
+                amountSponsorsInvestment: 200000
+              },
+              {
+                companyName: 'Musical Instruments',
+                ownerCompany: 'Verevskoy Anton',
+                sponsors: {
+                  secondNameSponsor: 'Davis',
+                  firstNameSponsor: 'Jonathan',
+                  investmentAmount: 70000
+                },
+                graduationYear: 2005,
+                amountSponsorsInvestment: 90000
+              },
+              {
+                companyName: 'family dentist',
+                ownerCompany: 'Oleg Burkovsky',
+                sponsors: {
+                  secondNameSponsor: 'Hetfield',
+                  firstNameSponsor: 'James',
+                  investmentAmount: 110000
+                },
+                graduationYear: 2010,
+                amountSponsorsInvestment: 130000
+              },
+              {
+                companyName: 'Rover',
+                ownerCompany: 'Vladimir Kravtsov',
+                sponsors: {
+                  secondNameSponsor: 'Duda',
+                  firstNameSponsor: 'Andrzej',
+                  investmentAmount: 210000
+                },
+                graduationYear: 2008,
+                amountSponsorsInvestment: 310000
+              },
+              {
+                companyName: 'CompuCters',
+                ownerCompany: 'Balyka Taras',
+                sponsors: {
+                  secondNameSponsor: 'Lipa',
+                  firstNameSponsor: 'Dua',
+                  investmentAmount: 90000
+                },
+                graduationYear: 2014,
+                amountSponsorsInvestment: 100000
+              },
+              {
+                companyName: 'Compas',
+                ownerCompany: 'Nekrasova Anastasia',
+                sponsors: {
+                  secondNameSponsor: 'Coverdale',
+                  firstNameSponsor: 'David',
+                  investmentAmount: 8000
+                },
+                graduationYear: 2003,
+                amountSponsorsInvestment: 10000
+              },
+              {
+                companyName: 'Photographer',
+                ownerCompany: 'Pronina Kasia',
+                sponsors: {
+                  secondNameSponsor: 'Gahan',
+                  firstNameSponsor: 'Dave',
+                  investmentAmount: 6000
+                },
+                graduationYear: 2001,
+                amountSponsorsInvestment: 9000
+              },
+            ]
+            // знайти загальну вартість усіх сайтів
+            let totalCostSites = arraySite.reduce(
+              (prevSum, price) => prevSum + price.amountSponsorsInvestment,
+              0
+            )
+            document.write(`Загальна вартість усіх сайтів дорівнює = ${totalCostSites} гр. <br>`)
+
+            //=============================================================//
+            // кількість сайтів, що було зроблено між 2000 та 2009 рр.
+              let siteBetwen2000And2009 = arraySite.reduce(
+                (prevYear, site) => 
+                site.graduationYear > 2000 && site.graduationYear < 2009? prevYear +1 : prevYear,
+                0
+              )
+              document.write(`кількість сайтів між 2000 та 2009 р. = ${siteBetwen2000And2009} <br>`)
+
+
+              //========================================================================================================//
+              // кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+              //let sumSitetheAmountGreaterThan100000 = arraySite.reduce(
+              //   (prevSum, site) => 
+              //   site.sponsors.investmentAmount > 100000? prevSum +1 : prevSum,
+              //   0
+              // )
+              // document.write(`кількість сайтів в котрих вкладень більше = ${sumSitetheAmountGreaterThan100000} <br>`)
+              let sumSitetheAmountGreaterThan100000 = 0
+              for (const site of arraySite) {
+                if(site.sponsors.investmentAmount > 100000)
+                sumSitetheAmountGreaterThan100000++
+              }
+              document.write(`кількість сайтів в котрих вкладень більше = ${sumSitetheAmountGreaterThan100000} <br>`)
+
+              //=================================================================================================//
+              // створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+              
+              
+              let newArrNameSponsors = []
+              for (const name in arraySite) {
+                newArrNameSponsors.push({
+                  lastName:arraySite[name].sponsors.secondNameSponsor, 
+                  firstName: arraySite[name].sponsors.firstNameSponsor
+                })
+              }
+              document.write('Список усіх спонсорів можна подивитись у консолі, або подивитись тут : <br>')
+              for (const key in newArrNameSponsors) {
+                document.write(`${key} - ${newArrNameSponsors[key].firstName} ${newArrNameSponsors[key].lastName} <br>`)
+              }
+              console.log(newArrNameSponsors);
+
+
+              //==========================================================================================================//
+              // знайти рік, коли прибуток був найбільшим
+              function getYearHighestProfit(arr) {
+                let maxSponsors = - Infinity
+                let year
+                for (let i = 0; i < arr.length; i++) {
+                  
+                  if (arr[i].amountSponsorsInvestment > maxSponsors) {
+                    maxSponsors = arr[i].amountSponsorsInvestment
+                    year = arr[i].graduationYear
+                  }
+                }
+                return year
+              }
+              let resultYear = getYearHighestProfit(arraySite)
+              console.log(resultYear);
+              document.write(`прибуток найбільшим був у ${resultYear} <br>`)
+              
+              //==========================================================================================//
+              // упорядкувати список за спаданням прибутку
+              let copyArr = JSON.parse(JSON.stringify(arraySite))
+              copyArr.sort((a,b) => b.amountSponsorsInvestment - a.amountSponsorsInvestment)
+              console.log(copyArr);
+              document.write('Список за спаданням прибутку(більше можна подивитись у консолі) : <br>')
+              for (const key in copyArr) {
+                document.write(`${copyArr[key].companyName} <br>`)
+              }
+              
+
+              //==========================================================================================//
+              // Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+
+
+                // I варіант (не знаю чи вірно зрозумів завдання)
+                function getListBefore100000(arr) {
+                  let sortArrBefore100000 = arr.filter((el) => 10000 >= el.amountSponsorsInvestment )
+                  let newSortArray = JSON.parse(JSON.stringify(sortArrBefore100000))
+                  return newSortArray
+                }
+                let resultListOne = getListBefore100000(arraySite)
+                console.log(resultListOne)
+                document.write(`
+                Повний список з вартісю до 100000 можна глянути у консолі  <br>
+                `)
+
+                function getListAfter100000(arr) {
+                  let sortArrAfter100000 = arr.filter((el) =>  el.amountSponsorsInvestment > 10000 )
+                  let newSortArray = JSON.parse(JSON.stringify(sortArrAfter100000))
+                  return newSortArray
+                }
+                let resultListTwo = getListAfter100000(arraySite)
+                console.log(resultListTwo)
+                document.write(`
+                Повний список з вартісю після 100000 можна глянути у консолі  <br>
+                `)
+                
+                // II другий варіант (Якщо можно скажіть правильно чи ні я зрозумів завдання, і який спосіб найкраще??)
+                let variantFourListBefore100000 = []
+                let variantFiveListAfter100000 = []
+                for (let i = 0; i < arraySite.length; i++) {
+                  if (arraySite[i].amountSponsorsInvestment <= 10000) {
+                    let copyArr1 = JSON.parse(JSON.stringify(arraySite[i]))
+                    variantFourListBefore100000.push(copyArr1)
+                  }
+                  if(arraySite[i].amountSponsorsInvestment > 10000){
+                  let copyArr2 = JSON.parse(JSON.stringify(arraySite[i]))
+                  variantFiveListAfter100000.push(copyArr2)
+                  }
+                }
+                console.log(variantFourListBefore100000);
+                console.log(variantFiveListAfter100000);
+            </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

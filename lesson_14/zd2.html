@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>2 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 2 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Розробити функцію, у яку передають об’єкт (день, місяць, рік).
+              Визначити, який буде рік через N місяців.
+            </div>
+          </div>
+          <script>
+            const enterSumMonth = parseInt(prompt("Введіть кількість місяців"));
+            let arrayDate = {
+              day: 31,
+              month: 7,
+              year: 2023,
+            };
+            function getYear({ year }, n) {
+              let cunter = 0;
+              let nextYear = year;
+              for (let i = 0; i <= n; i++) {
+                cunter++;
+                if (cunter === 12) {
+                  nextYear += 1;
+                  cunter = 0;
+                  
+                }
+              }
+              return nextYear;
+              
+            }
+            let result = getYear(arrayDate, enterSumMonth);
+            document.write(`${result}`);
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

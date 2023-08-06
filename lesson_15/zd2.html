@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>2 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >задача 2 (Link... повернення на першу
+              сторінку)</a
+            >
+            <div class="cards__txt">
+              Створити об’єкт «Авто».<br />
+              ----- Поля(властивості) -----<br />
+              Марка,Розмір бака, Кількість наявних літрів, <br />
+              Кількість місць, Кількість пасажирів.<br />
+              ------ Методи (дії) --------- <br />
+              Заправка на вказану кількість літрів, <br />
+              Виведення кількості пасажирів<br />
+              Додавання пасажирів<br />
+              Висадка пасажирів<br />
+            </div>
+          </div>
+          <script>
+            // Створити об’єкт «Авто».
+            function Auto(
+              inModel,
+              inFuelTank,
+              inNumberSeats,
+              inLiters,
+              inPassengers
+            ) {
+              // Марка
+              this.model = inModel;
+              // Розмір бака
+              this.fuelTank = inFuelTank;
+              // Кількість місць
+              this.numberSeats = inNumberSeats;
+              // Кількість наявних літрів
+              this.numberAvailableLiters = inLiters;
+              // Кількість пасажирів
+              this.numberPassengers = inPassengers;
+            }
+            // Заправка на вказану кількість літрів
+            Auto.prototype.refueling = function (addition) {
+              let sumLiters = this.numberAvailableLiters + addition;
+              if (sumLiters > this.fuelTank) {
+                this.numberAvailableLiters = this.fuelTank;
+                let remainder = sumLiters - this.fuelTank;
+                alert(
+                  `Бак повний ${this.numberAvailableLiters}, залишок ${remainder}`
+                );
+              } else this.numberAvailableLiters = sumLiters;
+              this.showNumberPassengers();
+            };
+            // Виведення кількості пасажирів
+            Auto.prototype.showNumberPassengers = function () {
+              alert(`Наразі ${this.numberPassengers} пасажирів`);
+            };
+            // Додавання пасажирів
+            Auto.prototype.addingPassengers = function (passengers) {
+              let sumPassengers = this.numberPassengers + passengers;
+              if (sumPassengers > this.numberSeats) {
+                let minusPassenger = sumPassengers - this.numberSeats;
+                this.numberPassengers = this.numberSeats;
+                alert(
+                  `Нажаль ${minusPassenger} пасажирів не вдалось поасадити в авто, він піде пішки`
+                );
+              } else this.numberPassengers = sumPassengers;
+            };
+            // Висадка пасажирів
+            Auto.prototype.passengerDisembarking = function (inNum) {
+              let minusPassengers = this.numberPassengers - inNum;
+              this.numberPassengers = minusPassengers;
+              alert(`У авто залишилось ${this.numberPassengers} пасажирів`);
+            };
+            let car = new Auto("Skoda", 45, 6, 20, 3);
+            car.refueling(parseInt(prompt("Введіть кількість літрів")));
+            car.addingPassengers(
+              parseInt(prompt("Введіть кількість додавання пасажирів"))
+            );
+            car.passengerDisembarking(
+              parseInt(prompt("Введіть кількість висадки пасажирів"))
+            );
+            console.log(car);
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

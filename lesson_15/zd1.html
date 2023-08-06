@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >задача 1 (Link... повернення на першу
+              сторінку)</a
+            >
+            <div class="cards__txt">
+              Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому
+              квадраті є заєць і 0 в іншому випадку.
+            </div>
+          </div>
+          <script>
+            function ShootingGallery(inSize, inNumberTargets) {
+              this.targetSize = inSize;
+              this.numberTargets = inNumberTargets;
+              // Масив, у якому зберігається поле з зайцями
+              this.readyField = this.getGenerativeFiled();
+            }
+            // метод рандомного заповнення поля
+            ShootingGallery.prototype.getGenerativeFiled = function () {
+              let filed = [];
+              for (let i = 0; i < this.targetSize; i++) {
+                filed.push(0);
+              }
+              for (let i = 0; i < this.numberTargets; ) {
+                let target = Math.floor(Math.random() * filed.length);
+                if (filed[target] !== 1) {
+                  filed[target] = 1;
+                  i++;
+                }
+              }
+              return filed;
+            };
+            // иетод пострілу
+            ShootingGallery.prototype.shooting = function () {
+              prompt(
+                "В тебе є 3 постріли, треба попасти в Зайця. Граєш чи ні?"
+              );
+              let bulet = 3;
+              let cunter = 2;
+              do {
+                let enterShoot = parseInt(
+                  prompt(`Введіть номер цілі `)
+                );
+                if (this.readyField[enterShoot - 1] === 1) {
+                  this.readyField[enterShoot - 1] = "X";
+                  prompt(`прям у ціль! залишилось ${cunter--}`);
+                } else prompt(`промах заєць втік залишилось куль ${cunter--}`);
+                bulet--;
+              } while (bulet > 0);
+              // return this.readyField
+              this.showFinih(this.readyField);
+            };
+            // метод виведення
+            ShootingGallery.prototype.showFinih = function (result) {
+              document.write(result);
+            };
+            let test = new ShootingGallery(10, 3);
+            test.shooting();
+            console.log(test);
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

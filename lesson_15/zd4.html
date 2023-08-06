@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>4 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >задача 4 (Link... повернення на першу сторінку)</a
+            >
+            <div class="cards__txt">
+              Розробити клас Baner<br>
+              -------- поля ----------<br>
+              Масив об’єктів ( графічних зображень та посилань на сайти)<br>
+              -------- Методи --------<br>
+              Метод випадкового вибору об’єкта (графічного зображення та посилання)<br>
+              Метод виведення випадкового банера<br>
+              <!-- <img src="img/aliexpress.png" alt="pic">
+              <img src="img/amazon.png" alt="pic">
+              <img src="img/autoria.png" alt="pic">
+              <img src="img/ebay.png" alt="pic">
+              <img src="img/olx.png" alt="pic"> -->
+              <a target="_blank" href=""></a>
+            </div>
+          </div>
+          <script>
+            // Масив об’єктів ( графічних зображень та посилань на сайти)
+            let arrBaner = [
+              {
+                image: '<img src="img/aliexpress.png" alt="pic">',
+                link: 'https://www.aliexpress.com/'
+              },
+              {
+                image: '<img src="img/amazon.png" alt="pic">',
+                link: 'https://www.amazon.com/'
+              },
+              {
+                image: '<img src="img/autoria.png" alt="pic">',
+                link: 'https://auto.ria.com/uk/car/used/'
+              },
+              {
+                image: '<img src="img/ebay.png" alt="pic">',
+                link: 'https://www.ebay.com/'
+              },
+              {
+                image: '<img src="img/olx.png" alt="pic">',
+                link: 'https://www.olx.ua/uk/list/'
+              },
+            ]
+            class RandomBaner{
+              constructor(inArr){
+                //Масив об’єктів ( графічних зображень та посилань на сайти)
+                  this.ArrayLink = inArr
+              }
+              // Метод випадкового вибору об’єкта (графічного зображення та посилання)
+              randomazer(){
+                let randomIndex = Math.floor(Math.random() * this.ArrayLink.length)
+                let index = this.ArrayLink[randomIndex]
+                return index
+              }
+              // Метод виведення випадкового банера
+              showBaner(){
+                let baner = this.randomazer()
+                document.write(`<a target="_blank" href="${baner.link}">${baner.image}</a>`)
+              }
+            }
+            let resultRandomBaner = new RandomBaner(arrBaner)
+            resultRandomBaner.showBaner()
+            console.log(resultRandomBaner);
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

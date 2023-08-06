@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>3 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >задача 3 (Link... повернення на першу
+              сторінку)</a
+            >
+            <div class="cards__txt">
+              Розробити клас MultChecker для перевірки таблиці множення<br />
+              ---------------- поля -------------<br />
+              Число, яке перевіряємо (наприклад, перевірка частини таблиці
+              множення на 7)<br />
+              Кількість правильних відповідей<br />
+              Кількість неправильних відповідей<br />
+              -------------- методи -------------<br />
+              Генерування прикладу (метод випадковим чином визначає друге число,
+              перше число фіксоване)<br />
+              Перевірка правильності вказаної відповіді<br />
+              render<br />
+            </div>
+          </div>
+          <script>
+            class MultChecker {
+              constructor(inNum, inCorrectAnswer, inWrongAnswer) {
+                // Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+                this.someNum = inNum;
+                // Кількість правильних відповідей
+                this.counterCorrectAnswers = inCorrectAnswer;
+                // Кількість неправильних відповідей
+                this.counterWrongAnswers = inWrongAnswer;
+              }
+              // Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+              exampleGeneration() {
+                return Math.floor(Math.random() * 20);
+              }
+              //Перевірка правильності вказаної відповіді
+              check() {
+                confirm("Ну шо готовий?");
+                do {
+                  let randomNUm = this.exampleGeneration();
+                  let multiplicativeNumber = this.someNum * randomNUm;
+                  let enterAnswer = parseInt(
+                    prompt(`Скільки буде ${this.someNum} * ${randomNUm}`)
+                  );
+                  if (enterAnswer === multiplicativeNumber) {
+                    this.counterCorrectAnswers++;
+                    alert("Красава знаєш у цій темі норм!");
+                  } else {
+                    this.counterWrongAnswers++;
+                    alert("Ойй ні не правильно! Думай!");
+                  }
+                } while (confirm("Ну шо ще разок?"));
+                this.render();
+              }
+              // render
+              render() {
+                document.write(`
+                Число котре перевіряли: ${this.someNum}<br>
+                Кількість вірних відповідей: ${this.counterCorrectAnswers}<br>
+                Кількість невірних відповідей: ${this.counterWrongAnswers}<br>
+              `);
+              }
+            }
+            let resultMultChecker = new MultChecker(
+              parseInt(
+                prompt(
+                  "Введіть чмсло котре хочете перевирити на тренажорі MultChecker"
+                )
+              ),
+              0,
+              0
+            );
+            resultMultChecker.check();
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

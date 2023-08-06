@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>0 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання 0 (Link...повернення на першу сторінку)</a
+            >
+            <div class="cards__txt">
+              Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у
+              одному з них є функція знаходження суми, а у іншому – функція для
+              знаходження добутку тих, які знаходяться між заданими мінімальним
+              і максимальних значенням.
+            </div>
+          </div>
+          <script>
+            // Дано два об’єкта.
+            let objectOne = {
+              //Обидва містять масив цілих чисел.
+              arr: [2, 9, 10, 73, 11, 15, 12],
+              //у одному з них є функція знаходження суми
+              getSum: function () {
+                let counter = 0;
+                for (let i = 0; i < this.arr.length; i++) {
+                  counter += this.arr[i];
+                }
+                return counter;
+              },
+            };
+            // Дано два об’єкта.
+            let objectTwo = {
+              //Обидва містять масив цілих чисел.
+              arr: [3, 8, 12, 13, 1, 5, 21],
+              //а у іншому – функція для знаходження добутку тих, які знаходяться між заданими
+              getMultiplication: function (min, max) {
+                //мінімальним і максимальних значенням.
+                let counter = 1;
+                for (let i = 0; i < this.arr.length; i++) {
+                  if (this.arr[i] >= min && max >= this.arr[i])
+                    counter *= this.arr[i];
+                }
+                return counter;
+              },
+            };
+
+            // Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+            document.write(`
+      Результат суми першого об'єкта = ${objectOne.getSum()}<br>
+      Результат суми другого об'єкта = ${objectOne.getSum.call(objectTwo)}<br>
+      Результат добутку другого об'єкта = ${objectTwo.getMultiplication(
+        10,
+        20
+      )}<br>
+      Результат добутку першого об'єкта = ${objectTwo.getMultiplication.apply(
+        objectOne,
+        [10, 20]
+      )}<br>
+      `);
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

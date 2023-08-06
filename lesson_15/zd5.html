@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>5 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >задача 5 (Link... повернення на першу сторінку)</a
+            >
+            <div class="cards__txt">
+              Розробити клас «Керівник танців» <br>
+              ---------------- поля  -----------------<br>
+              Масив імен хлопців<br>
+              Масив імен дівчат<br>
+              ---------------- Методи  -----------------<br>
+              Метод випадкового вибору імені хлопця<br>
+              Метод випадкового вибору імені дівчини<br>
+              Метод виведення пари для танців<br>
+              Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців<br>
+            </div>
+          </div>
+          <script>
+            // Масив імен хлопців
+            let arrNameBoys = ['Роман', 'Ігор', 'Віктор', 'Антон', 'Дмитро', 'Володимир', 'Павел',]
+            //Масив імен дівчат
+            let arrNameGirls = ['Світлана', 'Анастасія', 'Катерина', 'Олена', 'Оксана', 'Єлизавета', 'Альбіна', 'Ольга',]
+            class ManagerDances{
+              constructor(inBoysArr, inGirlsArr){
+                //Масив імен хлопців
+                this.boysArr = inBoysArr
+                // Масив імен дівчат
+                this.girlsArr = inGirlsArr
+              }
+              // Метод випадкового вибору імені хлопця
+              randomBoys(){
+                let random = Math.floor(Math.random() * this.boysArr.length)
+                return this.boysArr[random]
+              }
+              //Метод випадкового вибору імені дівчини
+              randomGirls(){
+                let random = Math.floor(Math.random() * this.girlsArr.length)
+                return this.girlsArr[random]
+              }
+              //Метод виведення пари для танців
+              showDancing(){
+                alert(`На танцпол виходять ${this.randomBoys()} та ${this.randomGirls()}`)
+              }
+              // Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+              runInterval(interval){
+                setInterval(() => {
+                  this.showDancing()
+              },interval)
+              }
+            }
+            let resultManagerDance = new ManagerDances(arrNameBoys, arrNameGirls)
+            resultManagerDance.runInterval(5000)
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

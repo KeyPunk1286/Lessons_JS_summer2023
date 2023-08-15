@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>3 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 3 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно 
+              генеруються числа, які треба перемножати), AddChecker (клас для перевірки 
+              додавання - рандомно генеруються числа у заданому діапазоні, які треба додавати). 
+              Обидва класи надсилають результати тестування об'єкту класу Hystory, який 
+              зберігає історію тестування у масиві у вигляді об'єктів. Приклад: <br>
+
+              
+              testsList= [
+              {firstNum:1, secondNum:5,opration:’*’, userAnswer:7, correctAnswer:5},
+              {firstNum:3, secondNum:4,opration:’+’, userAnswer:7, correctAnswer:7},
+                ]<br>
+              Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля. 
+              Розробити клас TestManager, який використовуючи ці класи за допомогою таймера 
+              періодично генерує якісь N задач (рандомно вибираємо, що опитувати: додавання чи множення) 
+              і проводить опитування. Результати тестування додаються в об’єкт History.  Зробити так, щоб 
+              об'єкт такого класу можна було створити тільки один. Коли зроблено ці N задач вивести усю 
+              історію на екран.
+            </div>
+          </div>
+          <script>
+            class MultChecker{
+              constructor(maxNum=20, minNum=1){
+                this.minNum = minNum
+                this.maxNum = maxNum
+              }
+              getMultiplicationOperation(minNum, maxNum){
+                minNum ??= this.minNum
+                maxNum ??= this.maxNum
+                return (this.minNum + Math.floor(Math.random() * (this.maxNum - this.minNum +1)))
+                
+              }
+              test(){
+                let firstNumber = this.getMultiplicationOperation()
+                let secondNumber = this.getMultiplicationOperation()
+                let correctAnswer = firstNumber * secondNumber
+                let userAnswer = parseInt(prompt(`${firstNumber} * ${secondNumber} =`))
+                if(correctAnswer === userAnswer) alert('Так шариш у цій темі! Красава')
+                else alert('Ні не шариш у цій темі .. йди вчись!')
+              return new TestData({
+                firstNumber,
+                operation: '*',
+                secondNumber,
+                userAnswer,
+                correctAnswer
+              })
+              }
+            }
+            class AddChecker{
+              constructor(maxNum=20, minNum=1){
+                this.minNum = minNum
+                this.maxNum = maxNum
+              }
+              getMultiplicationOperation(minNum, maxNum){
+                minNum ??= this.minNum
+                maxNum ??= this.maxNum
+                return (this.minNum + Math.floor(Math.random() * (this.maxNum - this.minNum +1)))
+                
+              }
+              test(){
+                let firstNumber = this.getMultiplicationOperation()
+                let secondNumber = this.getMultiplicationOperation()
+                let correctAnswer = firstNumber + secondNumber
+                let userAnswer = parseInt(prompt(`${firstNumber} + ${secondNumber} =`))
+                if(correctAnswer === userAnswer) alert('Так шариш у цій темі! Красава')
+                else alert('Ні не шариш у цій темі .. йди вчись!')
+              return new TestData({
+                firstNumber,
+                operation: '+',
+                secondNumber,
+                userAnswer,
+                correctAnswer
+              })
+              }
+            }
+            class TestData{
+              constructor(testDataObj){
+                // Object.assign(this, testDataObj)
+                this.firstNumber = testDataObj.firstNumber
+                this.secondNumber = testDataObj.secondNumber
+                this.operation = testDataObj.operation
+                this.userAnswer = testDataObj.userAnswer
+                this.correctAnswer = testDataObj.correctAnswer
+              }
+              toString(){
+                return `
+                Test: ${this.firstNumber} 
+                ${this.operation} 
+                ${this.secondNumber} 
+                відаовідь: ${this.userAnswer}
+                правильна відповідь ${this.correctAnswer}`
+              }
+            }
+            class History{
+              constructor(){
+                this.testList = []
+              }
+              addNewTest(testObj){
+                this.testList.push(new TestData(testObj))
+              }
+              printTestList(){
+                for(const test of this.testList){
+                  document.write(test)
+                  document.write('<hr>')
+                }
+              }
+            }
+            class TestManager{
+              constructor(totalTestCount, intervalTest, minNum=2, maxNum=9){
+                this.totalTestCount = totalTestCount
+                this.intervalTest = intervalTest
+                this.testNumberDone = 0
+                this.multChecker = new MultChecker()
+                this.addChecker = new AddChecker(minNum, maxNum)
+                this.history = new History()
+              }
+              doTest(){
+                let resultTest
+                // Визначаємо шо будемо перевіряти
+                if(Math.random() > 0.5) resultTest = this.addChecker.test()
+                else resultTest = this.multChecker.test()
+              // Результат додаємо у історію
+              this.history.addNewTest(resultTest)
+              // Рахуємо кількість тестів
+              this.testNumberDone ++
+              if(this.testNumberDone < this.totalTestCount)
+              setTimeout(() => {
+                this.doTest()
+              }, this.intervalTest);
+              else this.history.printTestList()
+              }
+              run(){
+                this.doTest()
+              }
+            }
+            let startTest = new TestManager(4, 4000,2,20)
+            startTest.run()
+
+            // !!!!!!  Зробити так, щоб об'єкт такого класу можна було створити тільки один.
+            // я не дуже зрозумів який і шо саме ... ?? 
+
+            </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

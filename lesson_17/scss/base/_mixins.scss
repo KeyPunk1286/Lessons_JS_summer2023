@@ -1,0 +1,26 @@
+@use "sass:math";
+//============================================================================================//
+//REM
+@function rem($px) {
+	$result: math.div($px, 16) + rem;
+	@return $result;
+}
+//EM
+@function em($px, $current: 16) {
+	$result: math.div($px, $current) + em;
+	@return $result;
+}
+
+//=============================================================================================//
+// базові настройки для боди
+@mixin forBody($fbmax-width:rem(1440), $fbfont-size: rem(16)){
+	max-width: $fbmax-width;
+	font-size: $fbfont-size;
+}
+// базові настройки для контейнера
+@mixin forContainer($fcmax-width: rem(1200), $fcmargin: 0 auto, $fcpadding: rem(0) rem(15)){
+  max-width: $fcmax-width;
+	margin: $fcmargin;
+	padding: $fcpadding;
+}
+//=============================================================================================//

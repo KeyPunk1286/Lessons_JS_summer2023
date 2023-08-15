@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>3 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 3 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Особиста бібліотека. Картотека домашньої бібліотеки: 
+              дані книги (автори (піб, рік народження, короткий опис), 
+              назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). 
+              Реалізувати розділи бібліотеки організувати додавання/вилучення 
+              книг та  вибір книг за назвою, за ПІБ автора, за видавництвом.
+            </div>
+          </div>
+          <script>
+              class AuthorBook{
+                constructor({firstName, lastName, birthYear, description}){
+                  this.firstName = firstName
+                  this.lastName = lastName
+                  this.birthYear = birthYear
+                  this.description = description
+                }
+              }
+              class Publishing{
+                constructor({namePublishing, registrationNumber, foundingYear}){
+                  this.namePublishing = namePublishing
+                  this.registrationNumber = registrationNumber
+                  this.foundingYear = foundingYear
+                }
+              }
+              class Book{
+                constructor(inInfo){
+                  this.title = inInfo.title
+                  this.genre = inInfo.genre
+                  this.author = new AuthorBook(inInfo)
+                  this.publishing = new Publishing(inInfo)
+                }
+              }
+              class Library{
+                constructor(inTitle, inListBook){
+                  this.title = inTitle
+                  this.listBook = inListBook
+                }
+                addBook(inNewBook){
+                  this.listBook.push(inNewBook)
+                }
+                remuveBook(inRemuve){
+                  this.listBook = this.listBook.filter((book) => book.title !== inRemuve)
+                }
+                filter(inBook){
+                  return  this.listBook.filter((book) => book.title === inBook)
+                }
+                filterName(name, surname){
+                  return  this.listBook.filter(
+                    (name) => name.author.firstName === name || name.author.lastName === surname)
+                }
+                filterNamePublishing(inNamePublishing){
+                  return this.listBook.filter((book) => book.publishing.namePublishing === inNamePublishing)
+                }
+              }
+
+              let bookList = [
+                new Book({
+                title: 'Життя Браяна. Мемуари соліста AC/DC',
+                genre: 'Біографії і мемуари',
+                firstName: 'Браян',
+                lastName: 'Джонсон',
+                birthYear: '1947',
+                description: 'Про спогади життя музиканта',
+                namePublishing: 'Лабораторія',
+                registrationNumber: 978,
+                foundingYear: ' 2020',
+              }),
+                new Book({
+                title: 'Кухня терору',
+                genre: 'Репортаж',
+                firstName: 'Вітольд',
+                lastName: 'Шабловський',
+                birthYear: '1980',
+                description: 'Книги про політику та економіку',
+                namePublishing: 'Видавництво Старого Лева',
+                registrationNumber: 979,
+                foundingYear: '2001',
+              }),
+                new Book({
+                title: 'Після війни',
+                genre: 'Історія',
+                firstName: 'Тоні',
+                lastName: 'Джадт',
+                birthYear: '1948',
+                description: 'політичні й культурні трансформації після 2 світової війни',
+                namePublishing: 'Наш Формат',
+                registrationNumber: '980',
+                foundingYear: '2004',
+              }),
+                new Book({
+                title: 'Дисципліна — це свобода',
+                genre: 'Здоров"я',
+                firstName: 'Джоко',
+                lastName: 'Віллінк',
+                birthYear: '1971',
+                description: 'Стратегія нового, здорового та упорядкованого життя',
+                namePublishing: 'Книголав',
+                registrationNumber: '981',
+                foundingYear: '2015',
+              }),
+                new Book({
+                title: 'Дофамінове покоління',
+                genre: 'Здоров"я, Психологія, Саморозвиток',
+                firstName: 'Анна',
+                lastName: 'Лембке',
+                birthYear: '1967',
+                description: 'Науково-популярна література',
+                namePublishing: 'Лабораторія',
+                registrationNumber: '982',
+                foundingYear: '2020',
+              }),
+            ]
+            let library = new Library('Моя бібліотека', bookList)
+            console.log(library);
+            library.addBook(
+              new Book({
+                title: 'Моссад',
+                genre: 'Суспільство, Політика',
+                firstName: 'Ніссім',
+                lastName: 'Мішаль',
+                birthYear: '1949',
+                description: 'Книги про політику та економіку',
+                namePublishing: 'Наш Формат',
+                registrationNumber: '983',
+                foundingYear: '2004',
+            })
+            )
+            library.remuveBook('Дофамінове покоління')
+            console.log(library.filter('Дисципліна — це свобода'));
+            console.log(library.filterName('Браян', 'Джонсон'));
+            console.log(library.filterNamePublishing('Наш Формат'));
+          </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

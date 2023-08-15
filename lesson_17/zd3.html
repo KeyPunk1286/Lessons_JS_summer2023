@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>3 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 3 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Створити клас Нагадувач. Кожні вказані кількості секунд 
+              (використати setInterval) програма нагадує про якусь подію 
+              (це просто текст) і також виводиться порядковий номер скільки 
+              раз вже нагадування було. Зробити так, щоб неможна було зробити 
+              одночасно декілька об’єктів-нагадувачів. Методи зупинки таймера, 
+              метод зміни повідомлення без зупинки таймера
+            </div>
+          </div>
+          <script>
+            class Reminder{
+              static interval = 3000
+              static reminderObjects
+              constructor(inMessage){
+                if(Reminder.reminderObjects)
+                return Reminder.reminderObjects
+
+                this.message = inMessage
+                this.runInterval = null
+                this.serialNumber = 0
+
+                Reminder.reminderObjects = this
+              }
+              run(){
+                this.runInterval =
+                setInterval(() => {
+                  this.serialNumber++
+                  document.write(`${this.message} ${this.serialNumber}<br>`)
+                }, Reminder.interval);
+              }
+              changeMessage(inNewMessage, inTimeValue){
+                setTimeout(() => {
+                  this.message = inNewMessage
+                }, inTimeValue);
+              }
+              stopMessage(inTimeValue){
+                setTimeout(() => {
+                  clearInterval(this.runInterval)
+                }, inTimeValue);
+              }
+            }
+            let message = new Reminder('Залишилось мало часу для вивчення матеріалу')
+            
+            message.run()
+            message.changeMessage('А вже ще менше часу на вивчення', 12000)
+            message.stopMessage(24000)
+
+
+
+          // </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

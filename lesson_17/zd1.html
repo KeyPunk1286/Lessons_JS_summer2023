@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1 Завдання</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <div class="main__container">
+          <div class="main__cards cards">
+            <a href="index.html" class="cards__title"
+              >Завдання ..... 1 (Link повернення на головну)</a
+            >
+            <div class="cards__txt">
+              Створити клас, що дозволяє виконувати такі операції над масивами: 
+              знаходження кількості додатних, кількості від’ємних, кількість 
+              входжень деякого числа (статичні методи)
+            </div>
+          </div>
+          <script>
+            class RandomNum{
+              static randome() {
+                const minNum = -20
+                const maxNum = 20
+                let arrayNum = []
+                for (let i = 0; i < maxNum; i++) {
+                  const someNum = minNum + Math.floor(Math.random() * (maxNum - minNum +1))
+                  arrayNum.push(someNum)
+                }
+                return arrayNum
+              }
+            }
+            class SortNumber{
+              static getSearchPositiveNumbers(inArray){
+                let searchPositive = inArray.reduce((prevNum, el) => el > 0? prevNum +1 : prevNum, 0)
+                return searchPositive
+              }
+              static getSearchNegativeNumbers(inArray){
+                let searchNegative = inArray.reduce((prevNum, el) => el < 0? prevNum +1 : prevNum, 0)
+                return searchNegative
+              }
+              static getSearchSomeNumbers(inArray,inSomeNum){
+                let searchSomeNum = inArray.reduce((prevNum, el) => el === inSomeNum? prevNum +1 : prevNum, 0)
+                return searchSomeNum
+              }
+            }
+            let newArr = RandomNum.randome()
+            console.log(newArr);
+            document.write(`
+            Масив = [${newArr}] <br> 
+            Кількість додатних = ${SortNumber.getSearchPositiveNumbers(newArr)} <br>
+            Кількість від'ємних = ${SortNumber.getSearchNegativeNumbers(newArr)} <br>
+            Кількість входжень деяких чисел = ${SortNumber.getSearchSomeNumbers(newArr, 5)} <br>
+            `)
+            </script>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

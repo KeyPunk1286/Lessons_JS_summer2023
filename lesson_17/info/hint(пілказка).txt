@@ -1,0 +1,21 @@
+// знайти рік, коли прибуток був найбільшим
+              function getYearHighestProfit(arr) {
+                let maxSponsors = - Infinity
+                let year
+                for (let i = 0; i < arr.length; i++) {
+                  
+                  if (arr[i].amountSponsorsInvestment > maxSponsors) {
+                    maxSponsors = arr[i].amountSponsorsInvestment
+                    year = arr[i].graduationYear
+                  }
+                }
+                return year
+              }
+              let resultYear = getYearHighestProfit(arraySite)
+              console.log(resultYear);
+Це для пошуку найбільшого чогось !!!
+=========================================================================================
+
+
+
+// Рандомне число return min + Math.floor(Math.random()*(max - min +1))

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>3_Завдання</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_3 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Користувач задає рік народження. Визначити кількість років користувача.
+        </div>
+      </div>
+
+      <!-- ================================ Рішення ======================================== -->
+
+      <div class="boxDecisionDz">
+        <!--=================================== SCRIPT ==========================================-->
+        <script>
+          const todayYear = 2023
+        function calcAge(inYear) {
+          let userAge = parseInt(document.getElementById('enterYear').value)
+          let resultAge = inYear - userAge
+          document.querySelector('.ageUser').innerText = resultAge
+          // Не можу вдуплитись чому не знаходить через(getElementsByClassName ось цей класс('.ageUser'))
+          // це тому що він один??  а назва вибірки елементів у множені getElement(s)!  ?? 
+        }
+
+        window.onload = function () {
+          document.getElementById('button').onclick = () => calcAge(todayYear)
+        }
+        </script>
+
+        <!--=================================== HTML ==========================================-->
+        <div class="calcAge">
+        <label for="enterYear">Введіть свій рік народження</label>
+        <input id="enterYear" type="number" value="">
+        <div class="knob"><button id="button">Порахувати</button></div>
+        <div class="textInfo">Сьогодні вам: <span class="ageUser"></span> років.</div>
+        </div>
+
+          
+      </div>
+
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

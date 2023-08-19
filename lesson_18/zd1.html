@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>1_Завдання</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_1 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Розробити калькулятор
+        </div>
+      </div>
+
+<!--============================== Script ========================================-->
+  <script>
+    function calc(inValue) {
+      const firstNum = parseFloat(document.getElementById('firstNum').value)
+      const secondNum = parseFloat(document.getElementById('secondNum').value)
+      let operation
+      if(inValue==='add') operation = firstNum + secondNum
+      else if(inValue==='minus') operation = firstNum - secondNum
+      else if(inValue==='multiply') operation = firstNum * secondNum
+      else if(inValue==='divide')operation = firstNum / secondNum
+      document.getElementById('result').value = operation.toFixed(2)
+      
+    }
+
+    window.onload = function () {
+        document.getElementById('Plus').onclick = () =>calc('add')
+        document.getElementById('minus').onclick = () =>calc('minus')
+        document.getElementById('multiply').onclick = () =>calc('multiply')
+        document.getElementById('divide').onclick = () =>calc('divide')
+      }
+    
+  </script>
+
+<!--============================== HTML ========================================-->
+      <div class="calc">
+        <div class="calc_firstNum">
+          <label for="firstNum" class="mlFirst">First num</label>
+          <input id="firstNum" type="number" value="" class="enterField">
+        </div>
+        <div class="calc_secondNum">
+          <label for="secondNum">Second num</label>
+          <input id="secondNum" type="number" value="" class="enterField">
+        </div>
+        <div class="calc_button">
+          <button id="Plus">Додати</button>
+          <button id="minus">Відняти</button>
+          <button id="multiply">Помножити</button>
+          <button id="divide">Поділити</button>
+        </div>
+        <div class="calc_result">
+          <label for="result" class="mrResult">Результат</label>
+          <input id="result" type="number" value="" class="enterField">
+        </div>
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

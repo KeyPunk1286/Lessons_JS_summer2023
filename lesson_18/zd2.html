@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>2_Завдання</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_2 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Зробити конвертер валют (курси валют – константи у скрипті)
+        </div>
+      </div>
+
+      <!-- ================================ Script ======================================== -->
+  <script>
+    const euro = 39.7
+    const dollar = 36.5
+    function getConverter(inValue1, inValue2) {
+      const sumGryvn = parseFloat(document.getElementById('gryvSumm').value)
+
+      const convertEuro = sumGryvn / inValue1 
+      const convertDollar = sumGryvn / inValue2 
+
+      document.getElementById('sumEuro').value = convertEuro.toFixed(2)
+      document.getElementById('sumDollar').value = convertDollar.toFixed(2)
+
+    }
+    window.onload = function() {
+      document.getElementById('convert').onclick = () => getConverter(euro, dollar)
+    }
+  </script>
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz">
+        <div class="converterCalc">
+          <div>
+            <label for="gryvSumm">Сума в гривнях</label>
+            <input id="gryvSumm" type="number" value="">
+          </div>
+          
+          <div>
+            <button id="convert">Конвертувати</button>
+          </div>
+
+          <div>
+            <label for="sumEuro" class="mrEuro">Сума в євро</label>
+            <input id="sumEuro" type="number" value="">
+          </div>
+
+          <div>
+            <label for="sumDollar">Сума в доларах</label>
+            <input id="sumDollar" type="number" value="">
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>5_Завдання</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_5 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Користувач задає кількість рядків і стовпців. Відобразити таблицю, у клітинках якої знаходяться числа 1, 2, 3, …
+
+        </div>
+      </div>
+
+      <!-- ================================ Рішення ======================================== -->
+
+      <div class="boxDecisionDz">
+        <!--=================================== SCRIPT ==========================================-->
+        <script>
+        function createTable() {
+          const enterNumberTr = parseInt(document.getElementById('tr').value) 
+          const enterNumberTd = parseInt(document.getElementById('td').value)
+          let fillNumber = 1
+          
+          const createTable = document.createElement('table')
+          document.querySelector('.enterNumber').after(createTable)
+          for (let i = 0; i < enterNumberTr; i++) {
+            const createTr = document.createElement('tr')
+            for (let y = 0; y < enterNumberTd; y++) {
+              const createTd = document.createElement('td')
+              createTd.innerText = fillNumber
+              createTr.append(createTd)
+              fillNumber++
+            }
+            createTable.append(createTr)
+          }
+        }
+        window.onload = function(){
+          document.getElementById('button').onclick = createTable
+        }
+        </script>
+
+        <!--=================================== HTML ==========================================-->
+        <div class="enterNumber">
+          <div>
+            <label for="tr" class="mrTr">Введіть кількість рядків</label value="">
+            <input id="tr" type="number">
+          </div>
+          <div>
+            <label for="td">Введіть кількість стовпців</label>
+            <input id="td" type="number" value="">
+          </div>
+          <div>
+            <button id="button">Створити</button>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

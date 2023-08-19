@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>3_Завдання</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_3 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки 
+          випадковим чином вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)
+        </div>
+      </div>
+
+      <!-- ================================ Script ======================================== -->
+
+      <div id="parent" class="boxDecisionDz">
+        <script>
+        const arrayWishes = [
+        'Прагніть до успіху і виглядайте так, немов ви його вже досягли',
+          'Краще завжди позбуватись від “хороших” ворогів',
+          'Нічого не може бути приємніше, ніж подобатися всім і кожному',
+          'Чим ми наповнюємо наші молитви, то нам і належить',
+          'Різниця між переможцем і переможеним тільки в тому, що перший піднявся більше разів, ніж впав',
+          'Кожен дарований нам день є першим в тому відрізку життя, що нам залишився',
+          'Не варто витрачати час і сили на дрібниці, потрібно думати про головне',
+          'Все не так гладко, як того б хотілося, але набагато краще, ніж могло б бути',
+          'Потрібно робити те, що ти повинен робити. І нехай все буде так, як буде',
+          'Визначтеся з кінцевою метою – і у вас з’явиться шанс на перемогу',
+          'Зворотною стороною кожної поразки є відкриті нові можливості',
+          'Стати твоїм другом дано не кожному, але кожному дано стати чиїмось учителем',
+          'Щоб бути воістину щасливим-володарюй над своїми думками'
+        ]
+        function createWishes(inArr, inValue) {
+          
+          for (let i = 0; i < inValue; i++) {
+            let randomWishes = Math.floor(Math.random() * inArr.length)
+            let wishes = inArr[randomWishes]
+            const createDiv = document.createElement('div')
+            createDiv.innerText = `"${wishes} !"`
+            document.querySelector('.boxDecisionDz').prepend(createDiv)
+          }
+        }
+        const result = createWishes(arrayWishes, 3)
+        createWishes()
+
+        </script>
+        
+      </div>
+
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

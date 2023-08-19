@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>7_Завдання</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_7 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів 
+          транспорту (авто, автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) 
+          та одного з 3-х гідів(використати  - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+        </div>
+      </div>
+
+      <!-- ================================ Рішення ======================================== -->
+
+      <div class="boxDecisionDz">
+        <!--=================================== SCRIPT ==========================================-->
+        <script>
+        function travelPrice() {
+          let transportFoodtList = document.querySelectorAll('select')
+          let guideList = document.querySelectorAll('input')
+          let totalSum = 0
+          console.log(transportFoodtList);
+          for (const i of transportFoodtList) {
+            totalSum += parseInt(i.value) 
+          }
+          for (const i of guideList) {
+            if(i.checked) totalSum += parseInt(i.value) 
+          }
+          document.querySelector('.totalSum').innerText = totalSum
+        }
+        window.onload = function(){
+          document.getElementById('button').onclick = travelPrice
+        }
+        </script>
+
+        <!--=================================== HTML ==========================================-->
+        <div class="boxTravel">
+
+          <div class="phaseone">
+            <select  id="transport">
+              <option value="500">Авто</option>
+              <option value="300">Автобус</option>
+              <option value="700">Літак</option>
+            </select>
+            <select id="food">
+              <option value="40">Сніданок</option>
+              <option value="50">Обід</option>
+              <option value="70">Вечеря</option>
+            </select>
+            <div class="guide">
+              <label for="SpiderMan">SpiderMan</label>
+              <input id="SpiderMan" type="radio" name="guideOne" value="100">
+              <label for="SuperMan">SuperMan</label>
+              <input id="SuperMan" type="radio" name="guideOne" value="120">
+              <label for="AquaMen">AquaMen</label>
+              <input id="AquaMen" type="radio" name="guideOne" value="130">
+            </div>
+          </div>
+          <div class="phasetwo">
+            <select id="transport">
+              <option value="500">Авто</option>
+              <option value="300">Автобус</option>
+              <option value="700">Літак</option>
+            </select>
+            <select id="food">
+              <option value="60">Сніданок</option>
+              <option value="80">Обід</option>
+              <option value="90">Вечеря</option>
+            </select>
+            <div class="guide">
+              <label for="SpiderMan">SpiderMan</label>
+              <input id="SpiderMan" type="radio" name="guideTwo" value="110">
+              <label for="SuperMan">SuperMan</label>
+              <input id="SuperMan" type="radio" name="guideTwo" value="140">
+              <label for="AquaMen">AquaMen</label>
+              <input id="AquaMen" type="radio" name="guideTwo" value="150">
+            </div>
+          </div>
+          <div class="phasethree">
+            <select id="transport">
+              <option value="1100">Авто</option>
+              <option value="3000">Автобус</option>
+              <option value="7000">Літак</option>
+            </select>
+            <select id="food">
+              <option value="100">Сніданок</option>
+              <option value="160">Обід</option>
+              <option value="150">Вечеря</option>
+            </select>
+            <div class="guide">
+              <label for="SpiderMan">SpiderMan</label>
+              <input id="SpiderMan" type="radio" name="guideThree" value="150">
+              <label for="SuperMan">SuperMan</label>
+              <input id="SuperMan" type="radio" name="guideThree" value="170">
+              <label for="AquaMen">AquaMen</label>
+              <input id="AquaMen" type="radio" name="guideThree" value="190">
+            </div>
+          </div>
+          <div class="knob"><button id="button">Порахувати</button></div>
+          <div class="totalPrice">Загальна сума:  <span class="totalSum"></span> $</div>
+        </div>
+      </div>
+
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

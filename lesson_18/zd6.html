@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>6_Завдання</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_6 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті 
+          формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку 
+          “get sum” і знаходить середнє значення.
+        </div>
+      </div>
+
+      <!-- ================================ Рішення ======================================== -->
+
+      <div class="boxDecisionDz">
+        <!--=================================== SCRIPT ==========================================-->
+        <script>
+          function createTable() {
+            let numberTable = parseInt(document.getElementById('enterNumberTable').value)
+            let createTable = document.createElement('table')
+            document.querySelector('.tableCreate').after(createTable)
+
+            for (let i = 0; i < numberTable; i++) {
+              let createTr = document.createElement('tr')
+              let createInput = document.createElement('input')
+              createInput.type = 'number'
+              createInput.className = 'enterNuber'
+              createTr.append(createInput)
+              createTable.append(createTr)
+            }
+          }
+          function calcNumbers() {
+            let numbersInput = document.querySelectorAll('.enterNuber')
+            let sumNumberInput = 0
+            for (const i of numbersInput) {
+              sumNumberInput += parseInt(i.value)
+            }
+            let totalSum = sumNumberInput / numbersInput.length
+            document.querySelector('.resulOperation').innerText = totalSum.toFixed(2)
+          }
+        window.onload = function () {
+          document.getElementById('buttonTable').onclick = createTable
+          document.getElementById('buttonResult').onclick = calcNumbers
+        }
+        </script>
+
+        <!--=================================== HTML ==========================================-->
+        <div class="boxCalc">
+          <div class="tableCreate">
+            <label for="enterNumberTable">Введіть кількість оцінок</label>
+            <input id="enterNumberTable" type="number"> <br>
+            <button id="buttonTable">Створити</button>
+          </div>
+          <div class="buttonCalcSum"><button id="buttonResult">Знайти середнє значення</button></div>
+          <div class="resulOperation"></div>
+        </div>
+      </div>
+
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

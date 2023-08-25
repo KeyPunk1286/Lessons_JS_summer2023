@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>3_Завдання</title>
+    <style>
+      .boxDecisionDz{
+        display: flex;
+        column-gap: 20px;
+      }
+      .boxDecisionDz button{
+        border: 2px black solid;
+        padding: 0 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <!-- ============================ Завданя============================================ -->
+        <div class="txt">
+          <a href="index.html" class="link"
+            >Завдання_3 (Link_поернення на головну)</a
+          >
+          <div class="nameLesson">
+            Дано 5 випадковим чином згенерованих нумерованих списків з
+            рандомними числами (кількість елементів у списку випадкова від 1 до
+            10, елементи випадкові – від 1 до 100). При натисненні на кнопку
+            нумеровані списки з парною кількістю елементів зафарбувати у зелений
+            колір, інші у червоний.
+          </div>
+        </div>
+
+        <!-- ================================ HTML ======================================== -->
+        <div class="boxDecisionDz"></div>
+
+        <!-- ================================ Script ======================================== -->
+        <script>
+          class CreateOlList {
+            constructor(numberOlList) {
+              this.numberOlList = numberOlList;
+            }
+            getRandomNum(minNum, maxNum) {
+              return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+            }
+            render() {
+            
+              for (let i = 0; i < this.numberOlList; i++) {
+                let olList = document.createElement('ol')
+                let randomLengthList = this.getRandomNum(1,10)
+                for (let y = 0; y < randomLengthList; y++) {
+                  let liElement = document.createElement('li')
+                  let randomElementForLi = this.getRandomNum(1,100)
+                  liElement.innerText = randomElementForLi 
+                  olList.append(liElement)
+                }
+                document.querySelector('.boxDecisionDz').append(olList)
+              }
+              let buttonChangeColor = document.createElement('button')
+              buttonChangeColor.innerText = 'Надати колір'
+              buttonChangeColor.setAttribute('id', 'buttonChangeColor')
+              document.querySelector('.boxDecisionDz').append(buttonChangeColor)
+              buttonChangeColor.onclick = this.changeColorOlList
+            }
+            changeColorOlList(){
+              let olListAll = document.querySelectorAll('ol')
+              for (const ol of olListAll) {
+                if(ol.children.length%2 === 0) ol.style.backgroundColor = 'green'
+                else ol.style.backgroundColor = 'red'
+              }
+              
+            }
+            
+          }
+          window.onload = function () {
+            new CreateOlList(5).render();
+            
+            
+          };
+        </script>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

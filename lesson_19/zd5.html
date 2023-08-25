@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>5_Завдання</title>
+  <style>
+    .boxDecisionDz{
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 20px;
+      row-gap: 15px;
+    }
+    .greenFrame{
+      border: 5px green solid;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_5 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену 
+          рамку (при кліку робити toogle з класом вибраного елемента)
+        </div>
+      </div>
+
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz">
+      
+  
+      </div>
+
+
+      
+      <!-- ================================ Script ======================================== -->
+  <script>
+    let arrayPhotos = [
+      'img/hator.png',
+      'img/logitech1.png',
+      'img/logitech2.png',
+      'img/razer.png',
+      'img/logitech1.png',
+      'img/logitech2.png',
+    ]
+    class displayProductCards{
+      constructor(arrPhotos){
+        this.arrPhotos = arrPhotos 
+      }
+      greenFrame(){
+        let elementDiv = this
+        elementDiv.classList.toggle('greenFrame')
+      }
+      render(){
+        for (let i = 0; i < this.arrPhotos.length; i++) {
+          this.divElement = document.createElement('div')
+          this.divElement.className = 'divImg'
+          let imgElement = document.createElement('img')
+          imgElement.setAttribute('src', this.arrPhotos[i])
+          this.divElement.append(imgElement)
+          document.querySelector('.boxDecisionDz').append(this.divElement)
+          this.divElement.onclick = this.greenFrame
+          // Запитання про bind я досі не дуже зрозумів коли це робити 
+          // якщо маєте можливість пояснити? мроже коротке пояснення є?
+        }
+      }
+    }
+    window.onload = function () {
+      new displayProductCards(arrayPhotos).render()
+    }
+  </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

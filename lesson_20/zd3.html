@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>3_Завдання</title>
+    <style>
+      form{
+        display: flex;
+        flex-direction: column ;
+        
+      }
+      form :not(:last-child){
+        margin-bottom: 10px;
+      }
+      input{
+        max-width: 200px;
+        min-height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <!-- ============================ Завданя============================================ -->
+        <div class="txt">
+          <a href="index.html" class="link"
+            >Завдання_3 (Link_поернення на головну)</a
+          >
+          <div class="nameLesson">
+            На формі вводять 7 числових значень (вік, зріст, вага, заробітна плата, стаж, номер 
+            відділу, порядковий номер). Додати подію обробки події click на форму і якщо клік на 
+            внутрішньому input, то автоматично замінювати значення його на 0. Використати делегування
+          </div>
+        </div>
+
+        <!-- ================================ HTML ======================================== -->
+        <div class="boxDecisionDz"></div>
+        <!-- ================================ Script ======================================== -->
+        <script>
+          let arrayValueForForm = [
+            'вік',
+            'зріст',
+            'вага',
+            'заробітна плата',
+            'стаж',
+            'номер відділу',
+            'порядковий номер',
+          ]
+          class Form{
+            constructor(valueForForm){
+              this.valueForForm = valueForForm
+            }
+            setValueZzero(e){
+              if(e.target.tagName === 'INPUT')
+              e.target.value = 0
+            }
+            render(containerSelector){
+              let wrapperForm = document.createElement('form')
+              for (let i = 0; i < this.valueForForm.length; i++) {
+                let inputForm = document.createElement('input')
+                inputForm.setAttribute('type', 'number')
+                inputForm.setAttribute('placeholder', this.valueForForm[i])
+                wrapperForm.append(inputForm)
+              }
+              wrapperForm.onclick = this.setValueZzero.bind(this)
+              if(containerSelector)
+              document.querySelector(containerSelector).append(wrapperForm)
+            }
+          }
+          window.onload = function () {
+            new Form(arrayValueForForm).render('.boxDecisionDz')
+          }
+        </script>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

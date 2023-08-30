@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .product {
+        display: flex;
+        justify-content: space-between;
+        max-width: 300px;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 2px black solid;
+      }
+      .elemCalc {
+        max-width: 200px;
+      }
+
+      .buttonBlock {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      .screenDisplay {
+        max-width: 100%;
+        min-height: 25px;
+      }
+      .buttonBlock button {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper"></div>
+    <!-- <div class="elemCalc">
+        <div>
+            calc_screen <br> <input id="screen" type="number" value="" readonly class="screenDisplay">
+        </div>
+        <div class="buttonBlock">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>0</button>
+        </div> 
+    </div>-->
+    <script>
+      // document.querySelector('.buttonBlock').onclick = function (event) {
+      //     if(event.target.tagName === 'BUTTON')
+      //     document.getElementById('screen').value += event.target.innerText
+      // }
+      let productList = [
+        {
+          title: "Mouse",
+          price: 430,
+        },
+        {
+          title: "KeyBoard",
+          price: 700,
+        },
+        {
+          title: "Spicers",
+          price: 1000,
+        },
+        {
+          title: "Laptop",
+          price: 10000,
+        },
+        {
+          title: "Interface",
+          price: 4000,
+        },
+      ];
+      class Product {
+        constructor({ title, price }) {
+          this.title = title;
+          this.price = price;
+        }
+        onDelete() {
+          let deleteObject = new CustomEvent("deleteProduct", {
+            detail: {
+              priceOfDeleteObject: this.price,
+            },
+          });
+          this.innerWrapper.dispatchEvent(deleteObject);
+          this.innerWrapper.remove();
+        }
+        render(containerSelector) {
+          let innerWrapper = document.createElement("div");
+          innerWrapper.className = "product";
+
+          let titleSpan = document.createElement("span");
+          titleSpan.innerText = this.title;
+          innerWrapper.append(titleSpan);
+
+          let priceSpan = document.createElement("span");
+          priceSpan.innerText = this.price;
+          innerWrapper.append(priceSpan);
+
+          let buttonDelete = document.createElement("button");
+          buttonDelete.innerText = "delete";
+          buttonDelete.onclick = this.onDelete.bind(this);
+          innerWrapper.append(buttonDelete);
+
+          this.innerWrapper = innerWrapper;
+
+          if (containerSelector)
+            document.querySelector(".wrapper").append(innerWrapper);
+          return innerWrapper;
+        }
+      }
+      class Cart {
+        constructor(productLis) {
+          this.productLis = productLis;
+        }
+        onDeleteProduct(event) {
+          let priceDelete = event.detail.priceOfDeleteObject;
+          this.totalPrice -= priceDelete;
+          this.spanForTotalSum.innerText = this.totalPrice;
+        }
+        render(containerSelector) {
+          let productElement = document.createElement("div");
+          // тут створює об'єкт, так як писали віндоувонлоад .. і там вказували об'єкти
+          for (const element of this.productLis) {
+            let objetProduct = new Product(element);
+            productElement.append(objetProduct.render());
+
+            objetProduct.innerWrapper.addEventListener(
+              "deleteProduct",
+              this.onDeleteProduct.bind(this)
+            );
+          }
+
+          let divPrice = document.createElement("div");
+          divPrice.innerText = "Total : ";
+
+          let spanForTotalSum = document.createElement("span");
+
+          this.totalPrice = this.productLis.reduce(
+            (prevElem, poduct) => prevElem + poduct.price,
+            0
+          );
+          this.spanForTotalSum = spanForTotalSum;
+
+          spanForTotalSum.innerText = this.totalPrice;
+          this.spanForTotalSum = spanForTotalSum;
+          divPrice.append(spanForTotalSum);
+          productElement.append(divPrice);
+          if (containerSelector)
+            document.querySelector(containerSelector).append(productElement);
+        }
+      }
+      window.onload = function () {
+        let cart = new Cart(productList);
+        cart.render(".wrapper");
+      };
+      //==========================================================================================
+      
+    </script>
+  </body>
+</html>

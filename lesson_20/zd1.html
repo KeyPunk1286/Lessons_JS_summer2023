@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>1_Завдання</title>
+  <style>
+    .main{
+      overflow: hidden;
+      position: relative;
+    }
+    .star{
+      position: absolute;
+      width: 10px;
+      transition: width 0.5ms;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_1 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану. 
+          Кожна зірка (це екземпляр класу Star) з певним кроком і інтервалом збільшується від мінімального 
+          до максимального розміру. Як тільки досягнути максимального розміру зірочка повинна 
+          з’являтися у іншій випадковій позиції.
+        </div>
+      </div>
+
+      <!-- ================================ Рішення ======================================== -->
+
+      <!--=================================== HTML ==========================================-->
+      <div class="boxDecisionDz"></div>
+        <!--=================================== SCRIPT ==========================================-->
+        <script>
+        class ShiningStars{
+          constructor(numberStar, imgStar){
+            this.numberStar = numberStar
+            this.imgStar = imgStar
+          }
+          randomValueForPosition(minValue=1, maxValue=100){
+            return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+          }
+          randomPosition(){
+            this.imgStar.style.top = this.randomValueForPosition() + '%'
+            this.imgStar.style.left = this.randomValueForPosition() + '%'
+          }
+          run(minSize=10, maxSize=40, interval=20){
+            let counterStepSize = minSize
+            setInterval(() => {
+              counterStepSize++
+              this.imgStar.style.width = counterStepSize + 'px'
+              if(counterStepSize > maxSize){
+                counterStepSize = minSize
+                this.randomPosition()
+              }
+            }, interval);
+          }
+          render(containerSelector){
+            let imgStar = document.createElement('img')
+            imgStar.setAttribute('src', this.imgStar)
+            imgStar.className = 'star'
+            this.imgStar = imgStar
+            
+            this.randomPosition()
+            this.run()
+            
+            if(containerSelector)
+            document.querySelector(containerSelector).append(this.imgStar)
+          }
+        }
+        window.onload = function () {
+          let intvalCreateStar = setInterval(() => {
+            new ShiningStars(10, 'img/star.png').render('.main')
+          }, 1000);
+          setTimeout(() => {
+            clearInterval(intvalCreateStar)
+          }, 10000);
+        }
+        </script>
+
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

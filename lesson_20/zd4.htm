@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>4_Завдання</title>
+  <style>
+      .inputWraper{
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+      .inputWraper input{
+        max-width: 200px;
+        max-height: 30px;
+      }
+      .buttonWraper{
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+      .buttonWraper button{
+        max-width: 200px;
+        max-height: 30px;
+        border: 2px black solid;
+      }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_4 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          На сторінці міститься певна кількість кнопок і інпутів. Підраховувати загальну 
+          кількість кліків окремо на кнопках і окремо на інпутах.
+        </div>
+      </div>
+
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz"></div>
+      <!-- ================================ Script ======================================== -->
+  <script>
+    class TotalClicks{
+      constructor(numbersInputButton, counterClickInput=0,counterClickButton=0){
+        this.numbersInputButton = numbersInputButton
+        this.counterClickInput = counterClickInput
+        this.counterClickButton = counterClickButton
+      }
+      totalSumClick(e){
+        if(e.target.tagName === 'INPUT'){
+          this.counterClickInput++
+          this.screenInput.innerText = `Натиснули на інпут : ${this.counterClickInput}`
+        }
+        if(e.target.tagName === 'BUTTON'){
+          this.counterClickButton++
+          this.screenButton.innerText = `Натиснули на кнопку : ${this.counterClickButton}`
+
+          console.log(this.screenButton);
+        }
+      }
+      render(containerSelector){
+        let wrapperForm = document.createElement('div')
+        //========================================================
+        let inputWrapper = document.createElement('div')
+        inputWrapper.className = 'inputWraper'
+        for (let i = 0; i < this.numbersInputButton; i++) {
+          let inputElement = document.createElement('input')
+          inputElement.setAttribute('placeholder', i+1)
+          inputWrapper.append(inputElement)
+        }
+        let screenResultSumClickInput = document.createElement('div')
+        this.screenInput = screenResultSumClickInput
+        inputWrapper.append(this.screenInput)
+        wrapperForm.append(inputWrapper)
+        let buttonWrapper = document.createElement('div')
+        buttonWrapper.className = 'buttonWraper'
+        for (let y = 0; y < this.numbersInputButton; y++) {
+          let buttonElement = document.createElement('button')
+          buttonElement.innerText = `button ${y+1}`
+          buttonElement.setAttribute('type','submit')
+          buttonWrapper.append(buttonElement)
+        }
+        let screenResultSumClickButton = document.createElement('div')
+        this.screenButton = screenResultSumClickButton
+        buttonWrapper.append(this.screenButton)
+        wrapperForm.append(buttonWrapper)
+        wrapperForm.onclick = this.totalSumClick.bind(this)
+        //========================================================
+        if(containerSelector)
+        document.querySelector(containerSelector).append(wrapperForm)
+      }
+    }
+    window.onload = function () {
+      new TotalClicks(3).render('.boxDecisionDz')
+    }
+  </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

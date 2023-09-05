@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>5_Завдання</title>
+    <style>
+      .boxDecisionDz {
+        display: flex;
+        column-gap: 10px;
+      }
+      .listEn {
+        border: 2px black solid;
+        padding: 5px;
+      }
+      .listEn li {
+        border: 2px black solid;
+        padding: 5px;
+      }
+      .listEn li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+      .listUa {
+        border: 2px black solid;
+        padding: 5px;
+      }
+      .listUa li {
+        border: 2px black solid;
+        padding: 5px;
+      }
+      .listUa li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <!-- ============================ Завданя============================================ -->
+        <div class="txt">
+          <a href="index.html" class="link"
+            >Завдання_5 (Link_поернення на головну)</a
+          >
+          <div class="nameLesson">
+            Динамічний пошук. Є список працівників і поле пошуку. При введенні відображаються усі, 
+            які містять вказаний фрагмент
+          </div>
+        </div>
+
+        <!-- ================================ HTML ======================================== -->
+        <div class="boxDecisionDz"></div>
+        <!-- ================================ Script ======================================== -->
+        <script>
+          let arrayName = [
+            'Ольга Попова',
+            'Марія Темна,',
+            'Пьотр Магіла',
+            'Нікалай Зєрофф,',
+            'Міхаїл Кацюбінскій',
+            'Павєл Ґрабовскій,',
+            'Ольга Драгоманова',
+            'Олена Худа',
+            
+          ];
+          class Input{
+            constructor(title){
+              this.title = title
+            }
+            filterName(){
+              let filter = new CustomEvent('filterName', {
+                detail:{value: this.input.value},
+              })
+              this.label.dispatchEvent(filter)
+              console.log(this.input.value);
+            }
+            render(containerSelector){
+              let labelElement = document.createElement('label')
+              labelElement.innerText = this.title
+              let inputElement = document.createElement('input')
+              inputElement.addEventListener('input', this.filterName.bind(this))
+              labelElement.append(inputElement)
+              if(containerSelector)
+              document.querySelector(containerSelector).append(labelElement)
+            this.input = inputElement
+            this.label = labelElement
+            console.log(this.label);
+          }
+          }
+          class ListNameSearch{
+            constructor(arrName){
+              this.arrName = arrName
+            }
+            render(container){
+              console.log(container);
+              let wrapperUl = document.createElement('ul')
+              wrapperUl.className = 'wrapperUlList'
+              this.wrapperUl = wrapperUl
+              console.log(this.wrapperUl);
+              if(container)
+              document.querySelector(container).append(wrapperUl)
+            this.renderElementLi(this.arrName, wrapperUl)
+          }
+          renderElementLi(arrName, parentElement){
+              for (let i = 0; i < arrName.length; i++) {
+                let elementLiName = document.createElement('li')
+                elementLiName.innerText = arrName[i] 
+                parentElement.append(elementLiName)
+              }
+            }
+            run(event){
+              let inputValue = event.detail.value
+              let filterNewList = this.arrName.filter((name) => name.toLowerCase().includes(inputValue.toLowerCase()))
+              this.wrapperUl.innerHTML = ''
+              this.renderElementLi(filterNewList, this.wrapperUl)
+            }
+          }
+          window.onload = function () {
+          let createInput = new Input('введіть ім"я')
+          createInput.render('.boxDecisionDz')
+          let search = new ListNameSearch(arrayName)
+          search.render('.boxDecisionDz')
+          createInput.label.addEventListener('filterName', search.run.bind(search))
+          
+        }
+        </script>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

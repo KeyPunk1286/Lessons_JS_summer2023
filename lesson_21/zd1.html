@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>1_Завдання</title>
+  <style>
+    .boxDecisionDz{
+      padding-bottom: 30px;
+    }
+    .wrapperClientCard{
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+    .wrapperClientCard input{
+      min-height: 25px;
+      border-radius: 5px;
+    }
+    .wrapperClientCard button{
+      min-height: 25px;
+      max-width: 100px;
+      border: 2px black solid;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_1 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          =================================================
+          Створити клас Client <br>
+          -------------- Властивості  <br>
+          ID <br>
+          ПІБ <br>
+          Кількість грошей на рахунку <br>
+          -------------- Методи  <br>
+          Додавання грошей <br>
+          Зняття грошей <br>
+          ToString<br>
+          ================================================
+          На основі цього класу створити клас GoldenClient
+          
+          -------------- Властивості  <br>
+          ID<br>
+          ПІБ<br>
+          Кількість грошей на рахунку<br>
+          Ліміт кредитних коштів<br>
+          Відсоток за використання кредитних коштів<br>
+          -------------- Методи  <br>
+          Додавання грошей<br>
+          Зняття грошей<br>
+          Визначення пені за використання кредитних коштів<br>
+          ToString<br>
+        </div>
+      </div>
+
+      <!-- ================================ Рішення ======================================== -->
+
+      <!--=================================== HTML ==========================================-->
+      <div class="boxDecisionDz"></div>
+        <!--=================================== SCRIPT ==========================================-->
+        <script>
+          let personalData = {
+            id: 37,
+            userName: 'Krawtsow R.W.',
+            moneyBalance: 100000,
+            limit: 50000,
+            percentage: 3,
+          }
+        class Client{
+          constructor({id,userName,moneyBalance}){
+            this.id = id
+            this.userName = userName
+            this.moneyBalance = moneyBalance
+          }
+          withdrawMoney(){
+            let sumWithdrawal = parseInt(this.inputWithdrawal.value)
+            if(sumWithdrawal > this.moneyBalance){
+              this.inputWithdrawal.value = ''
+              this.balance.innerText = 'Недостатньо коштів на вашому рахунку'
+            }
+            else{
+              this.moneyBalance -= sumWithdrawal
+              this.inputWithdrawal.value = ''
+              this.balance.innerText = `Баланс: ${this.moneyBalance}`
+            }
+
+          }
+          addingMoney(){
+            let sumAddition = parseInt(this.inputAddingMoney.value)
+            this.moneyBalance += sumAddition
+            this.inputAddingMoney.value = ''
+            this.balance.innerText = `Баланс: ${this.moneyBalance}`
+            console.log(sumAddition);
+          } 
+          render(container){
+            //=====  обгортка картки ======
+            let wrapperClientCard = document.createElement('div')
+            wrapperClientCard.className = 'wrapperClientCard'
+            this.wrapperClientCard = wrapperClientCard
+
+            //==== інфоормація клієнта ====
+            let clientInformation = document.createElement('div')
+            clientInformation.innerText = `id: ${this.id}  ${this.userName}`
+            wrapperClientCard.append(clientInformation)
+
+            //===== input додавання грошей =====
+            let labelAddingMoney = document.createElement('label')
+            labelAddingMoney.innerText = 'Додавання грошей'
+            let inputAddingMoney = document.createElement('input')
+            inputAddingMoney.setAttribute('type', 'number')
+            this.inputAddingMoney = inputAddingMoney
+            labelAddingMoney.append(this.inputAddingMoney)
+            wrapperClientCard.append(labelAddingMoney)
+
+            //==== кнопка додавання грошей===
+            let buttonAddingMoney = document.createElement('button')
+            buttonAddingMoney.innerText = 'Додати'
+            this.buttonAddingMoney = buttonAddingMoney
+            this.buttonAddingMoney.onclick = this.addingMoney.bind(this)
+            wrapperClientCard.append(this.buttonAddingMoney)
+
+            //==== зняття грошей ====
+            let labelWithdrawal = document.createElement('label')
+            labelWithdrawal.innerText = 'Зняття коштів'
+            let inputWithdrawal = document.createElement('input')
+            inputWithdrawal.setAttribute('type', 'number')
+            this.inputWithdrawal = inputWithdrawal
+            labelWithdrawal.append(this.inputWithdrawal)
+            wrapperClientCard.append(labelWithdrawal)
+
+            //==== кнопка зняття грошей ====
+            let buttonWithdrawal = document.createElement('button')
+            buttonWithdrawal.innerText = 'Зняти'
+            this.buttonWithdrawal = buttonWithdrawal
+            this.buttonWithdrawal.onclick = this.withdrawMoney.bind(this)
+            wrapperClientCard.append(this.buttonWithdrawal)
+
+            //===== баланс грошей =====
+            let balance = document.createElement('div')
+            balance.innerText = `Баланс: ${this.moneyBalance}`
+            this.balance = balance
+            wrapperClientCard.append(balance)
+
+            //==== додаємо у контейнер
+            if(container)
+            document.querySelector(container).append(wrapperClientCard)
+          }
+
+          toString(){
+            return `id : ${this.id}, User Name : ${this.userName}, Balance : ${this.moneyBalance}`
+          }
+        }
+        class GoldenClient extends Client{
+          constructor({id,userName,moneyBalance,limit,percentage}){
+            super({id,userName,moneyBalance})
+            // так у завданні не було такого пункту, але я правда не зміг по іншому врахувати 
+            // тому мені треба було ще одна фіксоване значення, я хотів додати просто moneyBalance
+            // але мені видавало NAN , тому зафіксував тут в this
+            this.limitCredit = moneyBalance
+            this.limit = limit
+            this.percentage = percentage
+          }
+          //=== метод нарахування пені
+          withdrawMoney(){
+            let sumWithdrawal = parseInt(this.inputWithdrawal.value)
+            this.moneyBalance -= sumWithdrawal
+            // тому от таких дров я нарубва ... не знаю чи вірно, але працює )) 
+            if(this.moneyBalance >= this.limit && this.moneyBalance <= this.limitCredit){
+              let amountDebt = this.limitCredit - this.moneyBalance
+              this.percentageSum = amountDebt / 100 *  this.percentage
+              this.inputWithdrawal.value = ''
+              this.balance.innerText = `Баланс: ${this.moneyBalance}`
+              this.percentageInfo.innerText = `Пеня складає ${this.percentageSum} гр`
+              console.log(`first ${this.percentageSum}`);
+            }
+            else if(this.moneyBalance < this.limit){
+              alert(`Нажаль ліміт коштів ${this.limit}`)
+              this.inputWithdrawal.value = ''
+              
+            }
+            else{
+              this.inputWithdrawal.value = ''
+              this.balance.innerText = `Баланс: ${this.moneyBalance}`
+            }
+            
+          }
+          //=== рендер дочірнього ===
+          render(container){
+            super.render(container)
+            // до речі ... я не дуже зрозумів ще такий момент, 
+            // треба тут писати super.render(container) чи ні? 
+            // бо без цього на екран виводило цей метот рендера батьківського класу. 
+            // це зз-а того шо я у властивостях прописав super? 
+            // і у методах не треба робити ?? Вибачаюсь шо задаю питання
+            // я в записах урок дивився, не було можливості задати питання :(
+            let percentageInfo = document.createElement('div')
+            this.percentageInfo = percentageInfo
+            this.wrapperClientCard.append(this.percentageInfo)
+          }
+        }
+        window.onload = () => {
+          let clientKrawtsow = new GoldenClient(personalData) 
+          clientKrawtsow.render('.boxDecisionDz')
+          console.log(clientKrawtsow);
+        }
+        </script>
+
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

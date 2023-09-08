@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>1_Завдання</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_1 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Визначити привітання у залежності від часу доби (Доброго дня, Доброго ранку, Доброго вечора)
+        </div>
+      </div>
+
+      <!-- ================================ Рішення ======================================== -->
+
+      <!--=================================== HTML ==========================================-->
+      <div class="boxDecisionDz"></div>
+        <!--=================================== SCRIPT ==========================================-->
+        <script>
+          function autoGreeting() {
+            let date = new Date().getHours()
+            let greetingMessage
+            if(date < 6) greetingMessage = 'Доброї ночі'
+            else if(date <= 11) greetingMessage = 'Добрий ранок'
+            else if(date <= 17) greetingMessage = 'Добрий бень'
+            else  greetingMessage = 'Добрий вечір'
+            document.querySelector('.boxDecisionDz').innerText = greetingMessage
+          }
+          window.onload = ()=>{
+            autoGreeting()
+          }
+        </script>
+
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

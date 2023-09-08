@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>5_Завдання</title>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <!-- ============================ Завданя============================================ -->
+        <div class="txt">
+          <a href="index.html" class="link"
+            >Завдання_5 (Link_поернення на головну)</a
+          >
+          <div class="nameLesson">
+            Користувач вводить дату народження. Визначити, скільки йому повних років.
+          </div>
+        </div>
+
+        <!-- ================================ HTML ======================================== -->
+        <div class="boxDecisionDz">
+          <input type="date" class="inDateBirthday">
+          <button class="submit">Разрахувати</button>
+          <div class="screenResult"></div>
+        </div>
+        <!-- ================================ Script ======================================== -->
+        <script>
+          function getFullYear(){
+            let inputDate = document.querySelector('.inDateBirthday').value
+            let date = new Date()
+            let birthday = new Date(inputDate)
+            let difference = date - birthday
+            let resultDifference = new Date(difference)
+            document.querySelector('.screenResult').innerText =  `Вам зараз: ${resultDifference.getFullYear() - 1970} років`
+            console.log(resultDifference);
+          }
+          window.onload = ()=> {
+            document.querySelector('.submit').onclick =  getFullYear 
+          }
+        </script>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

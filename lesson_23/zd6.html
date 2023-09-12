@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>6_Завдання</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_6 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.
+        </div>
+      </div>
+
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz">
+      </div>
+
+
+      
+      <!-- ================================ Script ======================================== -->
+  <script>
+    function returnFromVacation(numDateVacation){
+      let date = new Date()
+      let resultDate = date.setDate(date.getDate() + numDateVacation)
+      let option = {day: 'numeric', month: 'long', year: 'numeric'}
+      document.querySelector('.boxDecisionDz').innerText = `Дата поверненя з відпустки ${date.toLocaleString('uk-UA', option)}`
+      console.log(date);
+    }
+    window.onload = ()=> {
+      returnFromVacation(56)
+    }
+  </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

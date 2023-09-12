@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>7_Завдання</title>
+  <style>
+   
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_7 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення.
+        </div>
+      </div>
+
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz">
+        <span>Введіть кількість годин прокату авто</span>
+        <input type="number" class="hoursIn">
+        <button class="submit">Надіслати</button>
+        <div class="screenResult"></div>
+      </div>
+      <!-- ================================ Script ======================================== -->
+  <script>
+    function determineTime() {
+      let hoursInput = parseFloat(document.querySelector('.hoursIn').value)
+      let date = new Date()
+      date.setHours(date.getHours() + hoursInput)
+      document.querySelector('.screenResult').innerText = `Час повернення: ${date.toLocaleString('uk-Ua')}`
+      
+    }
+    window.onload = ()=>{
+      document.querySelector('.submit').onclick = determineTime 
+    }
+    
+  </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

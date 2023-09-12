@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>10_Завдання</title>
+  <style>
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_10 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і  вставкою.
+        </div>
+      </div>
+
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz">
+        <div class="buble"></div>
+        <div class="insertion"></div>
+      </div>
+      
+      
+      <!-- ================================ Script ======================================== -->
+  <script>
+    function getRandomNum(minNum, maxNum) {
+      return minNum + Math.floor(Math.random() * (maxNum - minNum +1))
+    }
+    function createArray(length, minNum,maxNum){
+      let newArr = []
+      for (let i = 0; i < length; i++) {
+        newArr.push(getRandomNum(minNum,maxNum))
+      }
+      return newArr
+    }
+    function bubbleSort(array) {
+      let startPoint = new Date()
+      let changed
+      do{
+        changed = false
+        for (let i = 1; i < array.length; i++) {
+          if(array[i-1] > array[i]){
+            let temp = array[i-1]
+            array[i-1] = array[i]
+            array[i] = temp
+            changed = true
+          }
+          
+        }
+      }while(changed)
+      let endPoint = new Date()
+      milisecondsCount = endPoint - startPoint
+      document.querySelector('.buble').innerText = `Результат сортуванн бульбашкою: ${milisecondsCount} млс`
+    }
+    function insertionSort(array){
+      let startPoint = new Date()
+      for (let index = 1; index < array.length; index++) {
+        let currentElement = array[index]
+        let temp =  index - 1 
+        while (temp >= 0 && array[temp] > currentElement) {
+          array[temp+1] = array[temp]
+          temp = temp -1
+        }
+        array[temp+1] = currentElement
+      }
+      let endPoint = new Date()
+      milisecondsCount = endPoint - startPoint
+      document.querySelector('.insertion').innerText = `Результат сортування включенням: ${milisecondsCount} млс`
+    }
+    let array = createArray(1000, 1,800)
+    let arrayToBubbleSort = [...array]
+    let arrayToInsertionSort = [...array]
+    bubbleSort(arrayToBubbleSort)
+    insertionSort(arrayToInsertionSort)
+  </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

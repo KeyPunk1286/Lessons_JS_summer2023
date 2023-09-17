@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>2_Завдання</title>
+  <style>
+      .boxDecisionDz {
+        max-width: 700px;
+        margin: 0 auto;
+        padding-top: 50px;
+      }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_2 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.
+        </div>
+      </div>
+
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz"></div>
+      <!-- ================================ Script ======================================== -->
+      <script>
+        let authorBookArr = [
+          {name: 'name1', year: 2003, author: 'Roman Kravtsov'},
+          {name: 'name2', year: 2014, author: 'Roman Kravtsov'},
+          {name: 'name3', year: 2013, author: 'Victor'},
+          {name: 'name4', year: 2001, author: 'Liza Li'},
+          {name: 'name5', year: 2003, author: 'Denis Lui'},
+          {name: 'name6', year: 2019, author: 'Liza Li'},
+          {name: 'name7', year: 2021, author: 'Roman Kravtsov'},
+        ]
+        //=====================================================//
+        function newMap(arrAutthor) {
+          let map = new Map()
+          for (const book of arrAutthor) {
+            map.set(book.author, (map.get(book.author) ?? 0)+1)
+          }
+          return map
+        }
+        let newMapArr = newMap(authorBookArr)
+        console.log(newMapArr);
+        function numBookAuthor(newMap) {
+          newMap.forEach((value, key) => {
+            document.querySelector('.boxDecisionDz').innerHTML += `<p>${key} - ${value} книги</p>`
+          });
+        }
+        let startResult = numBookAuthor(newMapArr)
+
+        
+        
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

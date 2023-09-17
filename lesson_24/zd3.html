@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>3_Завдання</title>
+    <style>
+      .boxDecisionDz{
+        max-width: 700px;
+        margin: 0 auto;
+        padding-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <!-- ============================ Завданя============================================ -->
+        <div class="txt">
+          <a href="index.html" class="link"
+            >Завдання_3 (Link_поернення на головну)</a
+          >
+          <div class="nameLesson">
+            Дано інформацію про відвідувачів деякого сайту (для кожного відвідувача зберігається логін). 
+            Підрахувати для кожного клієнта кількість відвідувань.
+          </div>
+        </div>
+
+        <!-- ================================ HTML ======================================== -->
+        <div class="boxDecisionDz"></div>
+        <!-- ================================ Script ======================================== -->
+        <script>
+          let arrLogName = [
+            'Saasekzho',
+            'Naeknalne',
+            'Rukavasay',
+            'Zhae',
+            'Melaar',
+            'Lan',
+            'Keokab',
+            'Kekoshmya',
+            'Naeknalne',
+            'Saasekzho',
+            'Rukavasay',
+            'Lan',
+            'Melaar',
+            'Zhae',
+            'Kekoshmya',
+            'Keokab',
+            'Naeknalne',
+            'Keokab',
+            'Saasekzho',
+            'Kekoshmya',
+            'Naeknalne',
+            'Saasekzho',
+            'Rukavasay',
+            'Zhae',
+            'Melaar',
+          ]
+          //============================================//
+          function newMap(array) {
+            let map = new Map()
+            for (const name of array) {
+              map.set(name, (map.get(name) ?? 0) +1)
+            }
+            return map
+          }
+          let map = newMap(arrLogName)
+          //==================================================//
+          function numberOfVisits(array) {
+            array.forEach((value, key) => {
+              document.querySelector('.boxDecisionDz').innerHTML += `<p>${key} - ${value} разів відвідування</p>`
+            });
+          }
+          let resultNumberVisit = numberOfVisits(map)
+          </script>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+  </html>
+  

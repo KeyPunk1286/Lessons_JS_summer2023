@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>7_Завдання</title>
+  <style>
+    .boxDecisionDz{
+      max-width: 700px;
+      margin: 0 auto;
+      padding-top: 150px;
+    }
+    .changeColor{
+      margin: 0 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_7 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Користувач може змінювати колір фону, що вибирає користувач з використанням<br>
+          < input type="color" ><br>
+          Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати 
+          кількість змін протягом одного сеансу.
+
+        </div>
+      </div>
+
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz"><span>Змінюй тут</span><input type="color" class="changeColor"><span>тут змінюй</span></div>
+      <!-- ================================ Script ======================================== -->
+  <script>
+    window.onload = ()=>{
+      let inputColor = document.querySelector('.changeColor')
+      let bgColor = localStorage.getItem('bgColor')
+      if(bgColor){
+        document.querySelector('.main').style.backgroundColor = bgColor
+      } 
+      else document.querySelector('.main').style.backgroundColor = 'darkgrey'
+      let countChange = 0
+      inputColor.addEventListener("change", changeColor)
+      function changeColor(e){
+        let newColor = inputColor.value
+        document.querySelector('.main').style.backgroundColor = newColor
+        localStorage.setItem('bgColor', newColor)
+        countChange ++
+        sessionStorage.setItem('bgChanges', countChange)
+      }
+    }
+  </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

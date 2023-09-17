@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>4_Завдання</title>
+    <style>
+      .boxDecisionDz{
+        max-width: 700px;
+        margin: 0 auto;
+        padding-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <!-- ============================ Завданя============================================ -->
+        <div class="txt">
+          <a href="index.html" class="link"
+            >Завдання_4 (Link_поернення на головну)</a
+          >
+          <div class="nameLesson">
+            Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, 
+            та кількість студентів кожного з курсів
+          </div>
+        </div>
+
+        <!-- ================================ HTML ======================================== -->
+        <div class="boxDecisionDz">
+        </div>
+        <!-- ================================ Script ======================================== -->
+        <script>
+          let arrStudents = [
+            {name: 'Власова І.Р.', course: 1, faculty: 'Лфк'},
+            {name: 'Шилов А.Б.', course: 4, faculty: 'Юридичний'},
+            {name: 'Белов Е.Ю.', course: 2, faculty: 'Міжнародно-правовий'},
+            {name: 'Біла А.Ф.', course: 1, faculty: 'Психології'},
+            {name: 'Лісова Е.А.', course: 3, faculty: 'Лфк'},
+            {name: 'Некрасова А.В.', course: 2, faculty: 'Математичний'},
+            {name: 'Ваніхін Л.О.', course: 4, faculty: 'Міжнародно-правовий'},
+            {name: 'Білка А.Ю.', course: 5, faculty: 'Юридичний'},
+            {name: 'Поляков В.Д.', course: 1, faculty: 'Лфк'},
+          ]
+          //============================================================//
+          function numberOfDifferentFaculty(arr) {
+            let newArrFaculty = new Set(arr.map(facult=> facult.faculty)).size
+            document.querySelector('.boxDecisionDz').innerHTML = `<p>Кількість різних факультетів: ${newArrFaculty}</p>`
+          }
+          let resultNumberFaculty = numberOfDifferentFaculty(arrStudents)
+          //==================================================================//
+          function newMapArr(arr) {
+            let map = new Map()
+            for (const student of arr) {
+              map.set(student.course, (map.get(student.course) ?? 0)+1)
+            }
+            return map
+          }
+          let resultNewMapArr = newMapArr(arrStudents)
+          //=================================================================//
+          function numberStudentsCourse(arr) {
+            arr.forEach((key, value) => {
+              document.querySelector('.boxDecisionDz').innerHTML += `<p>${value} курс - ${key} студентів</p>`
+            });
+          }
+          let resultNumberStudentsCourse = numberStudentsCourse(resultNewMapArr)
+        </script>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

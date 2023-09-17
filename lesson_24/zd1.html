@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>1_Завдання</title>
+  <style>
+   .maaiveScoolBoyAge{
+    max-width: 700px;
+  margin: 0 auto;
+  padding-top: 50px;
+   }
+   .maxAges{
+    max-width: 700px;
+  margin: 0 auto;
+  padding-top: 10px;
+   }
+  </style>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_1 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і максимальне.
+        </div>
+      </div>
+      <!-- ================================ HTML ======================================== -->
+      <div class="maaiveScoolBoyAge"></div>
+      <div class="maxAges"></div>
+      <!-- ================================ Script ======================================== -->
+      <script>
+        let someArrScoolBoyAges = [7,10,12,7,10,11,13,14,12,8,9,7,9,12,8]
+        //==================================================================//
+        function newMap(array) {
+          let newArrAges = new Map()
+          for (const age of array) {
+            newArrAges.set(age, (newArrAges.get(age)?? 0)+1)
+          }
+          return newArrAges
+        }
+        let newMapArr = newMap(someArrScoolBoyAges)
+        //==============================================//
+        function numAge(array) {
+          let maxAge = -Infinity
+          array.forEach((val,key) => {
+            document.querySelector('.maaiveScoolBoyAge').innerHTML += `<p>${key} р -${val} рази </p>`
+            if(key>maxAge) maxAge = key 
+          });
+          document.querySelector('.maxAges').innerText = `Максимальний вік учня - ${maxAge}`
+        }
+        let result = numAge(newMapArr)
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>4_Завдання</title>
+    <style>
+      .boxDecisionDz{
+        max-width: 700px;
+        margin: 0 auto;
+        padding-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <!-- ============================ Завданя============================================ -->
+        <div class="txt">
+          <a href="index.html" class="link"
+            >Завдання_4 (Link_поернення на головну)</a
+          >
+          <div class="nameLesson">
+            
+          </div>
+        </div>
+
+        <!-- ================================ HTML ======================================== -->
+        <div class="boxDecisionDz">
+        </div>
+        <!-- ================================ Script ======================================== -->
+        <script>
+          fetch("https://cataas.com/cat")
+          // .then((response)=> response.json())
+          // .then((data)=>{console.log(data);})
+          .then((data)=>{document.querySelector('.boxDecisionDz').innerHTML = `<img src="${data.url}">`})
+          // Я два дні :-)  не міг зрозуміти шо і як. По ітогу чомусь так працює .. я випадково закоментував верхній зен
+          // і з'явились картинки. І я не можу зрозуміти чому воно запрацювало без json ..???? 
+
+        </script>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

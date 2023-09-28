@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>6_Завдання</title>
+  <style>
+    .boxDecisionDz{
+      max-width: 700px;
+      margin: 0 auto;
+      padding-top: 50px;
+    }
+    .boxDecisionDz2{
+      max-width: 700px;
+      margin: 0 auto;
+      padding-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_6 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Дано два списки прізвищ студентів, що відвідують гуртки з математики і історії. 
+          Підрахувати скільки студентів з гуртка з історії також відвідують гурток з математики. 
+          Також підрахувати скільки всього студентів відвідують хоча б один гурток. 
+
+        </div>
+      </div>
+
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz"><span>Кількість студентів котрі відвідують історичний та математичний гуртки:</span></div>
+      <div class="boxDecisionDz2"><span>Кількість студентів котрі відвідують хоча б 1гурток:</span></div>
+      <!-- ================================ Script ======================================== -->
+  <script>
+    let historicalClub = new Set([
+      'Alina',
+      'Polina',
+      'Arsen',
+      'Pavel',
+      'Oleg',
+      'Victor',
+      'Roman',
+      'Liza',
+      'Anna',
+      'Volodymyr'
+    ])
+    let mathematicClub = new Set([
+      'Volodymyr',
+      'Liza',
+      'Roman',
+      'Alina',
+      'Victoria',
+      'Svitlana',
+      'Lilia',
+      'Andrij',
+      'Ivan',
+      'Alexander'
+    ])
+    //=================================================================//
+    // function twoClubsVisit(historicalClub, mathematicClub) {
+    //   let countStudents = 0
+    //   for (const name of historicalClub) {
+    //     if(mathematicClub.has(name)) countStudents++
+    //   }
+    //   console.log(countStudents);
+    // }
+    function twoClubsVisit(historicalClub, mathematicClub) {
+      // мабуть можна простіше зробити, але .. поки не зрозумів як. це другий варіант
+      let newSet = new Set()
+      for (const name of historicalClub) {
+        if(mathematicClub.has(name)) newSet.add(name)
+      }
+      document.querySelector('.boxDecisionDz').innerHTML += `<p>${newSet.size}</p>`
+    }
+    let result = twoClubsVisit(historicalClub, mathematicClub)
+    //=============================================================//
+    function allStudents(historicalClub, mathematicClub) {
+      for (const name of mathematicClub) {
+        historicalClub.add(name)
+      }
+      document.querySelector('.boxDecisionDz2').innerHTML += `<p>${historicalClub.size}</p>`
+    }
+    let resultAllStudents = allStudents(historicalClub, mathematicClub)
+  </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

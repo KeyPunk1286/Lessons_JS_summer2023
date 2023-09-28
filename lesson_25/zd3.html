@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>3_Завдання</title>
+    <style>
+      .boxDecisionDz{
+        max-width: 700px;
+        margin: 0 auto;
+        padding-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <main class="main">
+        <!-- ============================ Завданя============================================ -->
+        <div class="txt">
+          <a href="index.html" class="link"
+            >Завдання_3 (Link_поернення на головну)</a
+          >
+          <div class="nameLesson">
+            Створити генератор, який би випадковим чином поступово генерував вказану кількість парних чисел.
+          </div>
+        </div>
+
+        <!-- ================================ HTML ======================================== -->
+        <div class="boxDecisionDz"></div>
+        <!-- ================================ Script ======================================== -->
+        <script>
+          function* generativeNum(numberEven,minNum,maxNum) {
+            for (let i = 0; i < numberEven;) {
+              let randomNum = minNum + Math.floor(Math.random() * (maxNum-minNum + 1))
+              if(randomNum%2 === 0){
+                yield randomNum
+                i++
+              }
+            }
+            
+            
+          }
+          let arrNum = [...generativeNum(10,1,100)]
+          for (const number of arrNum) {
+            document.querySelector('.boxDecisionDz').innerHTML +=  `${number} <br>`
+          }
+          </script>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+  </html>
+  

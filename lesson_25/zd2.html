@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>2_Завдання</title>
+  <style>
+      .boxDecisionDz {
+        max-width: 700px;
+        margin: 0 auto;
+        padding-top: 50px;
+      }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_2 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Дано Shop  -- клас, що містить список товарів масив об’єктів класу Product (назва, ціна, кількість одиниць). 
+          Додати можливість ітератора до класу Shop, щоб при ітеруванні для кожного елемента виводився рядок «товар-загальна вартість»
+        </div>
+      </div>
+
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz"></div>
+      <!-- ================================ Script ======================================== -->
+      <script>
+        class Product{
+          constructor({name, price, numberUnits}){
+            this.name = name
+            this.price = price
+            this.numberUnits = numberUnits
+          }
+        }
+        let someArrProduct = [
+          new Product({name:'Кросівки', price: 2500, numberUnits: 15},),
+          new Product({name:'М\'ячі', price: 1500, numberUnits: 20},),
+          new Product({name:'Бутси', price: 2500, numberUnits: 5},),
+          new Product({name:'Футбольна форма', price: 3000, numberUnits: 10},),
+          new Product({name:'Вітрівка', price: 3500, numberUnits: 8},),
+        ]
+        //===================================================================//
+        class Shop{
+          constructor(productList){
+            this.productList = productList
+          }
+          *[Symbol.iterator](){
+            for (let i = 0; i < this.productList.length; i++) {
+              let unitValue = this.productList[i]
+              let result = `Назва товару: ${unitValue.name}, та її загальна вартість - ${unitValue.price * unitValue.numberUnits}`
+              yield result
+            }
+          }
+        }
+        let shopList = new Shop(someArrProduct)
+        for (const unit of shopList) {
+          document.querySelector('.boxDecisionDz').innerHTML += `${unit}<br>`
+          // це зручний спосіб, нижче інший спосіб з використанням next
+        }
+     
+
+
+        //це іншим способом , але перший мені здався зручнішим )) 
+
+        // class Product{
+        //   constructor({name, price, numberUnits}){
+        //     this.name = name
+        //     this.price = price
+        //     this.numberUnits = numberUnits
+        //   }
+        // }
+        // let someArrProduct = [
+        //   new Product({name:'Кросівки', price: 2500, numberUnits: 15},),
+        //   new Product({name:'М\'ячі', price: 1500, numberUnits: 20},),
+        //   new Product({name:'Бутси', price: 2500, numberUnits: 5},),
+        //   new Product({name:'Футбольна форма', price: 3000, numberUnits: 10},),
+        //   new Product({name:'Вітрівка', price: 3500, numberUnits: 8},),
+        // ]
+        // //======================================================================//
+        // class Shop{
+        //   constructor(productList){
+        //     this.productList = productList
+        //   }
+        //   [Symbol.iterator](){
+        //     this.current = 0
+        //     return this
+        //   }
+        //   next(){
+        //     if(this.current<this.productList.length){
+        //       let unitValue = this.productList[this.current++]
+        //       let result = `Назва товару: ${unitValue.name}, та її загальна вартість - ${unitValue.price * unitValue.numberUnits}`
+        //       return {done: false, value: result}
+        //     }
+        //     else return {done: true}
+        //   }
+        // }
+        // let shopList = new Shop(someArrProduct)
+        // for (const unit of shopList) {
+        //   document.querySelector('.boxDecisionDz').innerHTML += `${unit}<br>`
+        // }
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>

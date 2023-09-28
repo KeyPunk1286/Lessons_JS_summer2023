@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>1_Завдання</title>
+  <style>
+  .boxDicisionDz{
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 50px;
+  }
+  
+  </style>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_1 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Дано клас PhoneNumber. Створити функцію перетворення до string, при якому на основі 
+          номера виводиться оператор (050….   MTC, 096…  Kyivstar, ….)
+        </div>
+      </div>
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDicisionDz"><input id="numtel" type="number" placeholder="Введіть номер"><button id="button">Надіслати</button></div>
+
+      
+      <!-- ================================ Script ======================================== -->
+      <script>
+        let inputNum = document.querySelector('#numtel')
+        
+        let buttonSubmit = document.querySelector('#button')
+        class PhoneNumber{
+          constructor(inputNum){
+            this.num = inputNum.toString()
+            
+          }
+          [Symbol.toPrimitive](hint){
+            let result 
+            switch (hint) {
+              case 'string':
+                if(this.num.startsWith('050') || this.num.startsWith('066') || this.num.startsWith('095') || this.num.startsWith('099')){
+                  result = `${this.num} це номер оператора МТС`
+                }
+                else if(this.num.startsWith('063') || this.num.startsWith('093')){
+                  result = `${this.num} це номер оператора Life`
+                }
+                else if(this.num.startsWith('067') || this.num.startsWith('068') || this.num.startsWith('096') || this.num.startsWith('097')){
+                  result = `${this.num} це номер оператора Київстар`
+                }
+                else result = 'номер не визначено'
+                break;
+              case 'number':
+                result = parseInt(this.num)
+                break;
+            }
+            return result
+          }
+        }
+        let determineNumber = () =>{
+          let newResult = new PhoneNumber(inputNum.value)
+          document.querySelector('.boxDicisionDz').innerHTML = `<br> ${newResult}`
+        }
+        window.onload = ()=>{
+          buttonSubmit.addEventListener('click', determineNumber)
+        }
+      </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+  </div>
+</body>
+</html>

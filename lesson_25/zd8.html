@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>8_Завдання</title>
+  <style>
+  .boxDecisionDz{
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 50px;
+  }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+
+      <!-- ============================ Завданя============================================ -->
+      <div class="txt">
+        <a href="index.html" class="link">Завдання_8 (Link_поернення на головну)</a>
+        <div class="nameLesson">
+          Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage). 
+          Періодично випадковим чином вибирати якусь з справ і виводити користувачу (з використанням confirm). 
+          Якщо користувач натискає на «Ок», то видаляти цю задачу.
+        </div>
+      </div>
+
+      <!-- ================================ HTML ======================================== -->
+      <div class="boxDecisionDz"></div>
+      <!-- ================================ Script ======================================== -->
+  <script>
+    window.onload = ()=>{
+      let arrToDoList = ['Подзвонити батькам', 'Задонатити на ЗСУ', 'Подивитись нову лекцію', '15 разів поприсідати', 'Зустріч з друзями о 18']
+      localStorage.setItem('my_to-do_list', JSON.stringify(arrToDoList))
+      let listToDo = JSON.parse(localStorage.getItem('my_to-do_list'))
+      //===============================================================//
+
+      function deleteValueToDo(list,interval) {
+        let interval1 = setInterval(() => {
+          let randomNum = 0 + Math.floor(Math.random() * list.length)
+          if(list.length > 0){
+            let remind = confirm(`${list[randomNum]}`)
+            if(remind){
+              list.splice(randomNum,1)
+              localStorage.setItem('my_to-do_list',JSON.stringify(list))
+            }
+          }else{
+            clearInterval(interval1)
+            localStorage.removeItem('my_to-do_list')
+          }
+        }, interval);
+      }
+      let resultDeleteValueToDo = deleteValueToDo(listToDo, 5000)
+    }
+  </script>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>
